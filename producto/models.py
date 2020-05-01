@@ -16,3 +16,10 @@ class Producto (models.Model):
     def __str__(self):
         return self.descripcion
     
+class EstadoProducto (models.Model):
+    id_estado_producto = models.IntegerField(primary_key=True)
+    descripcion = models.CharField(max_length=30, help_text="Ingrese estado del producto")
+
+
+    def __str__(self):
+        return self.descripcion
