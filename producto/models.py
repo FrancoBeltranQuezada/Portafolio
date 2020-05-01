@@ -11,6 +11,7 @@ class Producto (models.Model):
     stock = models.IntegerField(null=False)
     stock_critico = models.IntegerField(null=False)
     codigo_producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
+    id_estado_producto = models.ForeignKey('EstadoProducto', on_delete = models.SET_NULL, null=True)
 
 
     def __str__(self):
