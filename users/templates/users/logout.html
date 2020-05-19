@@ -1,8 +1,10 @@
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -14,23 +16,27 @@
     <link rel="stylesheet" href="/static/css/mdb.min.css" />
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>holi home</h1>
-    <h1>hola</h1>
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{message.tags}}">
-      {{message}}
-    </div>
-    {% endfor %}
-    {% endif%}
+    <title>Base</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-    <button class="btn peach-gradient">Peach</button>
-    <button class="btn purple-gradient">Purple</button>
-    <button class="btn blue-gradient">Blue</button>
-    <button class="btn aqua-gradient">Aqua</button>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+       
+           <h2>
+               Te has deslogeado
+           </h2>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Logeate denuevo
+                    <a  href="{%url 'login'%}">Log In</a>
+                </small>
+            </div>
+        
+    </div>
+
 
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -41,5 +47,6 @@
     <script type="text/javascript" src="/static/js/mdb.min.js"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
-  </body>
+</body>
 </html>
+

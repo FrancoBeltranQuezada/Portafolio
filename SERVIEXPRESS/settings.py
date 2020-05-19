@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'servicio.apps.ServicioConfig',
     'producto.apps.ProductoConfig',
     'proveedor.apps.ProveedorConfig',
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'crispy_forms',    
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#Pagina a la que redirecciona luego de logearte
+LOGIN_REDIRECT_URL ='producto-home'
