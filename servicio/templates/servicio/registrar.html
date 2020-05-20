@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de servicio</title>
-</head>
-<body>
+
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
     <form action="" method="POST">
         <a href="">Registrar Servicio</a>
 
@@ -15,7 +11,7 @@
 
 
             <table>
-                {{ form.as_table }}
+                {{ form|crispy}}
 
             </table>
 
@@ -35,5 +31,4 @@
     {{mensaje}}
 
     
-</body>
-</html>
+    {% endblock %}
