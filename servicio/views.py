@@ -16,4 +16,11 @@ def registrar_servicio (request):
     data = {
         'form': ServicioForm()
     }
+
+    if request.method == 'POST':
+        formulario = ServicioForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Guardado correctamente"
+
     return render (request,'servicio/registrar.html', data)
