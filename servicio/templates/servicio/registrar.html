@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de servicio</title>
+</head>
+<body>
+    <form action="" method="POST">
+        <a href="">Registrar Servicio</a>
+
+        {% csrf_token %}
+
+        <form action="" method="POST">
+
+
+            <table>
+                {{ form.as_table }}
+
+            </table>
+
+            
+            <input type="submit" value="Agregar">
+            <input type="reset" value="limpiar">
+            
+            
+
+        </form>
+
+        
+        
+
+        
+    </form>
+    {{mensaje}}
+
+    
+</body>
+</html>
