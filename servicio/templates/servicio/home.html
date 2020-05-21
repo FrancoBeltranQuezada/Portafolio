@@ -1,20 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicio</title>
-</head>
-<body>
-    <form action="" method="GET">
-      
-        <input type="text" name="srv" >
-        <input type="submit" value="Agregar">
-      
-    </form>
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    
+<div class="row">
+    <div class="col-md">
+         <div class="card card-body">
+            <h5>Servicios:</h5>
+            <hr>
+            <a href="" class="btn blue-gradient">Actualizar
+
+            </a>
+            <a href="" class="btn btn-danger">Eliminar
+
+            </a>
+         </div>
+     </div>
+
+     <div class="col-md">
+         <div class="card card-body">
+             <h5>Holaaaaa</h5>
+             <hr>
+             <h1 style="text-align: center;padding: 10px"></h1>
+         </div>
+     </div>
+</div>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre servicio</th>
+                    <th>Valor servicio</th>
+                    <th>Estado servicio</th>
+                    
+                </tr>
+
+                {% for order in orders %}
+
+                <tr>    
+                    <th>{{order.servicio}}</th>
+                    <th>{{order.servicio}}</th>
+                    <th>{{order.servicio}}</th>
+                    <th>{{order.servicio}}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
 
     
 
     
-</body>
-</html>

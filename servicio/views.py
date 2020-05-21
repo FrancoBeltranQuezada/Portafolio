@@ -24,3 +24,11 @@ def registrar_servicio (request):
             data['mensaje'] = "Guardado correctamente"
 
     return render (request,'servicio/registrar.html', data)
+
+
+def actualizar_servicio (request, pk):
+    data = {
+        'form' : ServicioForm()
+    }       
+
+    return render (request, 'servicio/registrar.html', data)
