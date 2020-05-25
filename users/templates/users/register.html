@@ -31,11 +31,13 @@
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4"> Join Today</legend>
                     <!-- Aqui se imprime el formulario de usuario  --> 
+                  
                     {{ form|crispy }}
+                    {{ profile_form|crispy }}
         
                 </fieldset>
                 <div class="form-group">
-                    <button btn btn-outline-info type="submit">
+                    <button class="btn peach-gradient" type="submit">
                         Registrate ahora
                     </button>
                 </div>
