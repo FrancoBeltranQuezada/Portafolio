@@ -80,10 +80,12 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+    'ENGINE':   'django.db.backends.oracle',
+    'NAME':     'localhost:1521/XE',
+    'USER':     'C##DJANGO',
+    'PASSWORD': 'django',
+
+  }}
 
 
 # Password validation
