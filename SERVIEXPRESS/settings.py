@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
+    'crispy_forms',    
 ]
 
 MIDDLEWARE = [
@@ -78,22 +78,14 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-#    DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.sqlite3',
-#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#        }
-#    }
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
     'NAME':     'localhost:1521/XE',
     'USER':     'C##DJANGO',
     'PASSWORD': 'django',
-    
-  }}
 
+  }}
 
 
 # Password validation
@@ -134,9 +126,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Pagina a la que redirecciona luego de logearte
-LOGIN_REDIRECT_URL = 'producto-home'
+#Pagina a la que redirecciona luego de logearte
+LOGIN_REDIRECT_URL ='producto-home'
