@@ -29,23 +29,24 @@
               <!-- token de seguridad de django -->  
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4"> Join Today</legend>
+                    <legend class="border-bottom mb-4"> Crear Nuevo Usuario</legend>
                     <!-- Aqui se imprime el formulario de usuario  --> 
                     
                     {{ form|crispy }}
+                    
                     {{ profile_form|crispy }}
         
                 </fieldset>
                 <div class="form-group">
                     <button class="btn peach-gradient" type="submit">
-                        Registrate ahora
+                        Crear Usuario
                     </button>
                 </div>
         
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
-                    Ya tienes una cuenta?
+                    Ya tienes una cuentaaaa?
                     <a class="ml-2" href="{% url 'login' %}">Log In</a>
                 </small>
             </div>
