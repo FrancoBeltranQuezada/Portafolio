@@ -8,13 +8,7 @@
     <div class="col-md">
          <div class="card card-body">
             <h5>Servicios:</h5>
-            <hr>
-            <a href="" class="btn blue-gradient">Actualizar
-
-            </a>
-            <a href="" class="btn btn-danger">Eliminar
-
-            </a>
+            
          </div>
      </div>
 
@@ -27,29 +21,52 @@
      </div>
 </div>
 
-<div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre servicio</th>
-                    <th>Valor servicio</th>
-                    <th>Estado servicio</th>
-                    
-                </tr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID#</td>
+            <td>Nombre Servicio</td>
+            <td>Valor Servicio $</td>
+            <td>Estado Servicio</td>
+            <td>Acciones</td>
 
-                {% for order in orders %}
+        </tr>
+    </thead>
 
-                <tr>    
-                    <th>{{order.servicio}}</th>
-                    <th>{{order.servicio}}</th>
-                    <th>{{order.servicio}}</th>
-                    <th>{{order.servicio}}</th>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <tbody>
+        {% if servicios %}
+        {% for servicio in servicios %}
+
+        
+        
+        <tr>
+            <td>{{servicio.id_servicio}}</td>
+            <td>{{servicio.nombre_servicio}}</td>
+            <td>{{servicio.valor_servicio}}</td>
+            <td>{{servicio.id_estado_servicio}}</td>
+            <td><a href="{% url 'actualizar-servicio' servicio.id_servicio %}" class="btn blue-gradient">Actualizar
+            </a>
+            <a href="" class="btn btn-danger">Eliminar
+
+            </a>
+        </td>
+
+        </tr>
+
+
+        {% endfor  %}
+
+        {% else %}
+        <h1>No hay registros de servicios</h1>
+
+        {% endif %}
+    
+         
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    <a href="/servicio/registrar/" class="btn btn-primary">Nuevo Servicio</a>
 </div>
 
 {% endblock %}

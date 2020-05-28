@@ -1,0 +1,38 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID#</td>
+            <td>Nombre Servicio</td>
+            <td>Valor Servicio $</td>
+            <td>Estado Servicio</td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if servicios %}
+        {% for servicio in servicios %}
+        <tr>
+            <td>{{servicio.id_servicio}}</td>
+            <td>{{servicio.nombre_servicio}}</td>
+            <td>{{servicio.valor_servicio}}</td>
+            <td>{{servicio.id_estado_servicio}}</td>
+
+        </tr>
+
+        
+
+        {% endfor  %}
+
+        {% else %}
+        <h1>No hay registros de servicios</h1>
+
+        {% endif %}
+    
+         
+    </tbody>
+</table>
