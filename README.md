@@ -43,7 +43,7 @@ _Lo primero que debemos hacer es clonar este repositorio para poder tenerlo en n
 ```
 https://localhost:5500/em
 ```
-* [localhost:5500](https://localhost:5500/em) -Puedes Acceder directo desde aqui
+* [localhost:5500](https://localhost:5500/em) - Puedes Acceder directo desde aqui
 * _Los datos para logearnos son_
 ```
 Nombre de Usuario:system
@@ -104,5 +104,5 @@ Django version 3.0.6, using settings 'SERVIEXPRESS.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
-* [http://127.0.0.1:8000/](http://127.0.0.1:8000/) -Puedes Acceder directo desde aqui
+* [http://127.0.0.1:8000/](http://127.0.0.1:8000/) - Puedes Acceder directo desde aqui
 * _Una vez dentro ya puedes comenzar a utilizar el software de gestion de **ServiExpress**_
