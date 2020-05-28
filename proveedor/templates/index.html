@@ -1,0 +1,53 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="content-section">
+            <form method="POST" action="">
+              <!-- token de seguridad de django -->  
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> Log In</legend>
+                    <!-- Aqui se imprime el formulario de usuario  --> 
+                    {{ form|crispy }}
+        
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn blue-gradient" type="submit" href="{% url 'crear_proveedor'%}">
+                        crear proveedor
+                    </button>
+                </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th>Opcion</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for prov in provs %}
+             <tr>
+                <th scope="row">{{prov.nombre_proveedor}}</th>
+                <th>
+                    <a href="{% url 'editar_proveedor' prov.id_prov %}">editar</a>
+                    <!---<input href="{%url 'editar_proveedor' prov.pk%}" class="btn blue-gradient"type="submit" value="Editar">
+                    <input class="btn peach-gradient" type="reset" value="Eliminar"> ---->
+                </th>
+            
+            </tr>
+    {%endfor%}
+        </tbody>
+    </table>
+        
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    need an Account
+                    <a class="ml-2" href="{% url 'register' %}">SingUp Now</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

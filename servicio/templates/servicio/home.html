@@ -1,73 +1,83 @@
-{% extends 'base/base.html'%}
+{% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        font-family: Century Gothic;
 
+        
+    }
+
+    body{
+        background-color: #ededed;
+    }
+
+
+</style>
+
+<body>
+    <div class="mt-3 mb-5" style="text-align: center;">
+        <h1> Gestion de Servicios</h1>
+    </div>
+        
+     
     
-<div class="row">
-    <div class="col-md">
-         <div class="card card-body">
-            <h5>Servicios:</h5>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID#</th>
+                <th scope="col">Nombre Servicio</th>
+                <th scope="col">Valor Servicio#</th>
+                <th scope="col">Estado Servicio</th>
+                <th scope="col">Acciones</th>
+    
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% if servicios %}
+            {% for servicio in servicios %}
+    
             
-         </div>
-     </div>
-
-     <div class="col-md">
-         <div class="card card-body">
-             <h5>Holaaaaa</h5>
-             <hr>
-             <h1 style="text-align: center;padding: 10px"></h1>
-         </div>
-     </div>
-</div>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>ID#</td>
-            <td>Nombre Servicio</td>
-            <td>Valor Servicio $</td>
-            <td>Estado Servicio</td>
-            <td>Acciones</td>
-
-        </tr>
-    </thead>
-
-    <tbody>
-        {% if servicios %}
-        {% for servicio in servicios %}
-
-        
-        
-        <tr>
-            <td>{{servicio.id_servicio}}</td>
-            <td>{{servicio.nombre_servicio}}</td>
-            <td>{{servicio.valor_servicio}}</td>
-            <td>{{servicio.id_estado_servicio}}</td>
-            <td><a href="{% url 'actualizar-servicio' servicio.id_servicio %}" class="btn blue-gradient">Actualizar
-            </a>
-            <a href="" class="btn btn-danger">Eliminar
-
-            </a>
-        </td>
-
-        </tr>
-
-
-        {% endfor  %}
-
-        {% else %}
-        <h1>No hay registros de servicios</h1>
-
-        {% endif %}
+            
+            <tr>
+                <td >{{servicio.id_servicio}}</td>
+                <td>{{servicio.nombre_servicio}}</td>
+                <td>{{servicio.valor_servicio}}</td>
+                <td>{{servicio.id_estado_servicio}}</td>
+                <td><a href="{% url 'actualizar-servicio' servicio.id_servicio %}" class="btn blue-gradient">Actualizar
+                </a>
+                <a href="" class="btn btn-danger">Eliminar
     
-         
-    </tbody>
-</table>
+                </a>
+            </td>
+    
+            </tr>
+    
+    
+            {% endfor  %}
+    
+            {% else %}
+            <h1>No hay registros de servicios</h1>
+    
+            {% endif %}
+        
+             
+        </tbody>
+    </table>
+    
+    <div style="text-align: center;">
+        <a href="/servicio/registrar/" class="btn btn-primary">Nuevo Servicio</a>
+    </div>
+    
 
-<div style="text-align: center;">
-    <a href="/servicio/registrar/" class="btn btn-primary">Nuevo Servicio</a>
-</div>
+
+
+</body>
+
 
 {% endblock %}
 
