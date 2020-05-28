@@ -15,7 +15,7 @@ Python 3.8.2
 * [Python 3.8.2](https://www.python.org/downloads/release/python-382/) - Lo puedes descargar aqui
 
 ```
-Django           pip install Django==3.0.6
+Django                        pip install Django==3.0.6
 ```
 * [Django 3.0.6](https://www.djangoproject.com/download/) - Puedes encontrar la documentacion de como instalarlo aqui
 ```
@@ -32,7 +32,7 @@ Oracle Instant Client 32Bits
 ```
 * [Oracle Instant Client 32Bits](https://www.oracle.com/cl/database/technologies/instant-client/microsoft-windows-32-downloads.html) - Lo puedes descargar aqui, debes agregarlo a tus variables de entorno de tu sistema(Path)
 ```
-Cx-oracle 7.3.0  pip install cx_Oracle
+Cx-oracle 7.3.0               pip install cx_Oracle
 ```
 * [Cx-oracle](https://pypi.org/project/cx-Oracle/) - Puedes encontrar la documentacion aqui
 ### Instalación 🔧
