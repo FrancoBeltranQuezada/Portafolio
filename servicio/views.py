@@ -44,6 +44,19 @@ def actualizar_servicio(request, id_servicio):
 
 
 def listar_servicio(request):
-    servicio = Servicio.objects.all()
+    servicio = Servicio.objects.all().order_by('id_servicio')
     contexto ={'servicios' : servicio}   
     return render (request, 'servicio/home.html', contexto)
+
+
+
+def eliminar_servicio(request, id_servicio):
+    servicio = Servicio.objects.get(id_servicio=id_servicio)
+
+    if request.method == 'POST':
+        
+        servicio.delete()
+        return redirect('listar-servicio')
+
+    
+    return render (request, 'servicio/eliminar.html', {'servicios':servicio})
