@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import UserListView,UserDetailView,UserCreateView,UserDeleteView,UserUpdateProfile,UpdateUser
+from .views import UserListView,UserDetailView,UserCreateView,UserDeleteView,UserUpdateProfile,UpdateUser,homeview
+
 
 urlpatterns = [
     path('gestion-clientes/',UserListView.as_view(),name="user-list"),
@@ -8,4 +9,5 @@ urlpatterns = [
     path('gestion-clientes/<int:pk>/update/',UserUpdateProfile,name="user-update"),
    # path('gestion-clientes/<int:pk>/delete/',del_user,name="user-delete"),
     path('gestion-clientes/<int:pk>/delete/',UserDeleteView.as_view(),name="user-delete"),
+    path('',homeview, name='home')
 ]   

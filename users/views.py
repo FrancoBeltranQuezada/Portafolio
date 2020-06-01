@@ -8,6 +8,9 @@ from .models import User, UserProfile
 from django.urls import reverse_lazy
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 # Create your views here.
 
@@ -20,6 +23,9 @@ def register(request):
         profile_form = UserProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
+            user.is_staff = True
+            user.save()
+            
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
@@ -43,8 +49,12 @@ def listUser(request):
     }
     return render(request, 'listar_user.html', context)
 
+def homeview(request):
+    return render(request,'users/home.html')
 
-class UserListView(ListView):
+
+class UserListView(PermissionRequiredMixin,ListView):
+    permission_required = 'is_staff'
     model = User
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
@@ -112,7 +122,6 @@ class UpdateUser(UpdateView):
             return HttpResponseRedirect(self.get_succes_url())
         else:
             return HttpResponseRedirect(self.get_succes_url())
-
 
 
 

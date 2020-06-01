@@ -39,9 +39,11 @@
       <div class="sidebar">
         <header>SERVIEXPRESS</header>
         <ul>
+          {% if request.user.is_active and request.user.is_staff %}
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
           </li>
+          {% endif %}
           <li>
             <a href="#"><i class="fas fa-link"></i>Gestion Empleados</a>
           </li>
