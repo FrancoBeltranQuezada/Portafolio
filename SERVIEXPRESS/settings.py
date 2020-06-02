@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     'localhost:1521/XE',
+    'NAME':     'localhost:1522/XE',
     'USER':     'C##DJANGO',
     'PASSWORD': 'django',
     

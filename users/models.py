@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 #rut,telefono,direccion
@@ -16,5 +18,11 @@ class UserProfile(models.Model):
 
     def get_absolute_url(self):
         return reverse('user-detail', kwargs={'pk': self.pk})
+    
+
+
+    
+
+
     
 

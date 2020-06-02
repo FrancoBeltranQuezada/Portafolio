@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import UserProfile
 
+
 # se agregan nuevos campos al form de usuarios de django, para que se muestren en la vista de registro
 # heredando el formulario de creacion de usaurios
 
@@ -17,10 +18,19 @@ class UserRegisterForm(UserCreationForm):
         fields = [
             'username',
             'email',
-            'first_name', 'last_name',
+            'first_name',
+            'last_name',
             'password1',
             'password2',
         ]
+
+class UserUpdateForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fiels = ['email','first_name','last_name',]
+        exclude = ['password1','password2','username']
 
 
 class UserProfileForm(forms.ModelForm):
@@ -29,16 +39,6 @@ class UserProfileForm(forms.ModelForm):
         fields = ['direccion', 'telefono', 'rut']
 
 
-class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username',
-                  'email',
-                  'first_name',
-                  'last_name',
-                  ]
 
 class UserProfileUpdateForm(forms.ModelForm):
     class Meta:
@@ -47,3 +47,7 @@ class UserProfileUpdateForm(forms.ModelForm):
             'direccion', 'telefono', 'rut'
         ]
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
