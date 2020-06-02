@@ -23,7 +23,6 @@ class UserRegisterForm(UserCreationForm):
             'password1',
             'password2',
         ]
-
 class UserUpdateForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -33,10 +32,6 @@ class UserUpdateForm(UserCreationForm):
         exclude = ['password1','password2','username']
 
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ['direccion', 'telefono', 'rut']
 
 
 
@@ -47,7 +42,18 @@ class UserProfileUpdateForm(forms.ModelForm):
             'direccion', 'telefono', 'rut'
         ]
 
+
+
+
+
+
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
+        exclude = ['password1','password2','username']
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['direccion', 'telefono', 'rut']
