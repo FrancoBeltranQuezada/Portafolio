@@ -36,22 +36,16 @@
             </tr>
     {%endfor%}
 
+        </tbody>
+    </table>        
+                    
+                <div style="text-align: center;">
+                         <a href="/proveedor/crear" class="btn btn-primary">Nuevo Proveedor</a>
+                </div>
+                    
                 
 
-                <form action="/" method="POST">
-                    Nombre Proveedor: 
-                    <input type="char" name="nombre" value="{{nombre_proveedor}}" style="width:200px" / >
-                    <input type="submit" value="Filtrar">
-                    {% csrf_token %}
-                </form>
-        </tbody>
-    </table>
-
-                <div class="form-group">
-                    <button class="btn blue-gradient" type="submit" href="{% url 'crear_proveedor'%}">
-                        crear proveedor
-                    </button>
-                </div>
+              
         
             </form>
             <div class="border-top pt-3">
