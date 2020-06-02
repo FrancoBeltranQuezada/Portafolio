@@ -50,4 +50,7 @@ def editar_proveedor(request, id_prov):
 
     return render(request,'proveedor/templates/crear.html',context)
 
-
+def eliminar_proveedor(request, id_prov):
+    provs = prov.objects.get(id_prov=id_prov)
+    provs.delete()
+    return redirect('proveedor-home')
