@@ -117,6 +117,7 @@ class UserListView(GroupRequiredMixin,ListView):
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
     ordering = ['-date_joined']
+    
     def get_queryset(self):
         
         return User.objects.filter(groups='1')
@@ -188,6 +189,7 @@ class UpdateUser(UpdateView):
 
 def ErrorView(request):
     return render(request, 'base/error.html')
+
 
 def EmpleadoUpdateProfile(request,pk):
     usr = User.objects.get(pk=pk)
