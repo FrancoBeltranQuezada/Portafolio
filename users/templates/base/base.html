@@ -39,13 +39,15 @@
       <div class="sidebar">
         <header>SERVIEXPRESS</header>
         <ul>
-          {% if request.user.is_active and request.user.is_staff %}
+          {% for group in request.user.groups.all %}
+          {% if group.name == 'empleado' or is_staff %}
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
           </li>
           {% endif %}
+          {% endfor %}
           <li>
-            <a href="#"><i class="fas fa-link"></i>Gestion Empleados</a>
+            <a href="{% url 'empleado-list' %}"><i class="fas fa-link"></i>Gestion Empleados</a>
           </li>
           <li>
             <a href="#"><i class="fas fa-stream"></i>Gestion Boletas</a>

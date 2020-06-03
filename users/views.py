@@ -10,6 +10,8 @@ from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from .mixin import GroupRequiredMixin
+from django.contrib.auth.models import Group
 
 
 # Create your views here.
@@ -23,7 +25,11 @@ def register(request):
         profile_form = UserProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
-            user.is_staff = True
+            #se define el grupo cliente como cliente
+            cliente = Group.objects.get(name='cliente')
+            #se le asigna el grupo cliente al usuario que se va a crear
+            cliente.user_set.add(user)
+            #se guarda el usuario con los datos de los campos del form y el grupo cliente
             user.save()
             
             profile = profile_form.save(commit=False)
@@ -42,6 +48,38 @@ def register(request):
     return render(request, 'users/register.html', {'form': form, 'profile_form': profile_form})
 
 
+
+def registrarEmpleado(request):
+
+    # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
+            user = form.save()  # Se guarda el usuario creado en la BD
+            #se define el grupo cliente como empleado
+            cliente = Group.objects.get(name='empleado')
+            #se le asigna el grupo emplmeado al usuario que se va a crear
+            cliente.user_set.add(user)
+            #se guarda el usuario con los datos de los campos del form y el grupo cliente
+            user.save()
+            
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            
+
+            username = form.cleaned_data.get('username')
+            # se envia mensaje de confirmacion y redirecciona
+            messages.success(request, f'Acount created for {username}!')
+            return redirect('login')
+    else:
+        form = UserRegisterForm()
+        profile_form = UserProfileForm()
+
+    return render(request, 'empleados/registrar_empleado.html', {'form': form, 'profile_form': profile_form})
+
+
 def listUser(request):
     context = {
         'usuarios': User.objects.all(),
@@ -53,12 +91,35 @@ def homeview(request):
     return render(request,'users/home.html')
 
 
-class UserListView(PermissionRequiredMixin,ListView):
-    permission_required = 'is_staff'
+class EmpleadoListView(GroupRequiredMixin,ListView):
+    group_required = [u'empleado', u'manager']
+    model = User
+    template_name = 'empleados/listar_empleado.html'
+    context_object_name = 'usuarios'
+    ordering = ['-date_joined']
+
+    def get_queryset(self):
+
+        return User.objects.filter(groups='2')
+
+class EmpleadoDetailView(DetailView):
+    model = User
+    # <app>/<model>_<viewtype>.html
+
+class EmpleadoDeleteView(DeleteView):
+    model = User
+    success_url = '/usuario/gestion-empleado/'
+    template_name='empleados/empleado_confirm_delete.html'
+
+class UserListView(GroupRequiredMixin,ListView):
+    group_required = [u'empleado', u'manager']
     model = User
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
     ordering = ['-date_joined']
+    def get_queryset(self):
+        
+        return User.objects.filter(groups='1')
 
 
 class UserDetailView(DetailView):
@@ -125,15 +186,10 @@ class UpdateUser(UpdateView):
 
 
 
+def ErrorView(request):
+    return render(request, 'base/error.html')
 
-
-
-
-
-
-
-
-def UserUpdateProfile(request,pk):
+def EmpleadoUpdateProfile(request,pk):
     usr = User.objects.get(pk=pk)
     prof = UserProfile.objects.get(user_id=pk)
     print(usr.username)
@@ -147,6 +203,34 @@ def UserUpdateProfile(request,pk):
         #profile_form = UserProfileForm(instance=prof)
      #   users = User.objects.all().select_related('profile_form')
         
+        if profile_form.is_valid() and user_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            print('si guardo')
+            return redirect('empleado-list')
+        else:
+            print('no entro al if valid')
+            
+    else:
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = UserProfileForm(request.POST, instance=prof)
+
+    return render(request, 'empleados/user_form.html',{'user_form':user_form,'profile_form':profile_form})
+
+
+
+
+
+
+def UserUpdateProfile(request,pk):
+    usr = User.objects.get(pk=pk)
+    prof = UserProfile.objects.get(user_id=pk)
+    print(usr.username)
+    
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=usr)   
+        profile_form = UserProfileForm(request.POST, instance=prof)     
+
         if profile_form.is_valid() and user_form.is_valid():
             user_form.save()
             profile_form.save()

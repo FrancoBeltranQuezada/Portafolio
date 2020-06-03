@@ -7,4 +7,6 @@ class prov(models.Model):
     nombre_proveedor= models.CharField(max_length=30)
     def __str__(self):
         return self.nombre_proveedor
+    class Meta:
+        ordering = ['nombre_proveedor']
     

@@ -7,7 +7,7 @@
     {% csrf_token %}
     <h1>Desea eliminar a {{user.username}}?</h1>
     <button  type="submit" class="btn btn-danger">si</button>
-    <a  href="/usuario/gestion-clientes/"   class="btn btn-primary">Cancelar</a>
+    <a  href="{% url 'empleado-list' %}"   class="btn btn-primary">Cancelar</a>
 
 </form>
 {% endblock %}

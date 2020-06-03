@@ -9,16 +9,12 @@
               <!-- token de seguridad de django -->  
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4"> Log In</legend>
+                    <legend class="border-bottom mb-4"> Lista proveedores </legend>
                     <!-- Aqui se imprime el formulario de usuario  --> 
                     {{ form|crispy }}
         
                 </fieldset>
-                <div class="form-group">
-                    <button class="btn blue-gradient" type="submit" href="{% url 'crear_proveedor'%}">
-                        crear proveedor
-                    </button>
-                </div>
+                
     <table class="table">
         <thead>
             <tr>
@@ -32,14 +28,24 @@
                 <th scope="row">{{prov.nombre_proveedor}}</th>
                 <th>
                     <a href="{% url 'editar_proveedor' prov.id_prov %}">editar</a>
+                    <a href="{% url 'eliminar_proveedor' prov.id_prov %}">eliminar</a>
                     <!---<input href="{%url 'editar_proveedor' prov.pk%}" class="btn blue-gradient"type="submit" value="Editar">
                     <input class="btn peach-gradient" type="reset" value="Eliminar"> ---->
                 </th>
             
             </tr>
     {%endfor%}
+
         </tbody>
-    </table>
+    </table>        
+                    
+                <div style="text-align: center;">
+                         <a href="/proveedor/crear" class="btn btn-primary">Nuevo Proveedor</a>
+                </div>
+                    
+                
+
+              
         
             </form>
             <div class="border-top pt-3">
