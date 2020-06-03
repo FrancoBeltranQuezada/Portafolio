@@ -27,10 +27,10 @@
              <tr>
                 <th scope="row">{{prov.nombre_proveedor}}</th>
                 <th>
-                    <a href="{% url 'editar_proveedor' prov.id_prov %}">editar</a>
-                    <a href="{% url 'eliminar_proveedor' prov.id_prov %}">eliminar</a>
+                    <a href="{% url 'editar_proveedor' prov.id_prov %}" class="btn btn-primary">editar</a>
+                    <a href="{% url 'eliminar_proveedor' prov.id_prov %}" class="btn btn-primary">eliminar</a>
                     <!---<input href="{%url 'editar_proveedor' prov.pk%}" class="btn blue-gradient"type="submit" value="Editar">
-                    <input class="btn peach-gradient" type="reset" value="Eliminar"> ---->
+                    <input class="btn peach-gradient" type="reset" value="Eliminar"> -->
                 </th>
             
             </tr>
@@ -39,8 +39,8 @@
         </tbody>
     </table>        
                     
-                <div style="text-align: center;">
-                         <a href="/proveedor/crear" class="btn btn-primary">Nuevo Proveedor</a>
+                <div>
+                    <a href="/proveedor/crear_proveedor" class="btn btn-primary">Nuevo Proveedor</a>
                 </div>
                     
                 
