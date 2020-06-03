@@ -14,6 +14,40 @@
     body{
         background-color: #ededed;
     }
+    * {
+        box-sizing: border-box;
+        }
+
+    #miInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+        }
+
+    #miTabla {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+        }
+
+    #miTabla th, #myTable td {
+        text-align: left;
+        padding: 18px;
+        }
+
+    #miTabla tr {
+        border-bottom: 1px solid #ddd;
+        }
+
+    #miTabla tr.header, #miTabla tr:hover {
+        background-color: #f1f1f1;
+        }
 
 
 </style>
@@ -23,16 +57,15 @@
         <h1> Gestion de Servicios</h1>
     </div>
         
-     
-    
-    <table class="table table-bordered">
+<input type="text" id="miInput" onkeyup="buscarDatosTabla()" placeholder="Buscar por nombre..." title="Escribe un nombre">
+    <table class="table table-bordered" id="miTabla">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID#</th>
-                <th scope="col">Nombre Servicio</th>
-                <th scope="col">Valor Servicio#</th>
-                <th scope="col">Estado Servicio</th>
-                <th scope="col">Acciones</th>
+                <th onclick="ordenarTabla(0, 'int')" scope="col">ID#</th>
+                <th onclick="ordenarTabla(1, 'str')" scope="col">Nombre Servicio</th>
+                <th onclick="ordenarTabla(2, 'int')" scope="col">Valor Servicio#</th>
+                <th onclick="ordenarTabla(3, 'int')" scope="col">Estado Servicio</th>
+                <th  scope="col">Acciones</th>
     
             </tr>
         </thead>
@@ -73,10 +106,151 @@
         <a href="/servicio/registrar/" class="btn btn-primary">Nuevo Servicio</a>
     </div>
     
+    
 
+
+   
 
 
 </body>
+
+<script>
+    function buscarDatosTabla() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("miInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("miTabla");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+</script> 
+
+
+<script>
+
+    /**
+    
+     * Funcion para ordenar una tabla... tiene que recibir el numero de columna a
+    
+     * ordenar y el tipo de orden
+    
+     * @param int n
+    
+     * @param str type - ['str'|'int']
+    
+     */
+    
+    function ordenarTabla(n,type) {
+    
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    
+     
+    
+      table = document.getElementById("miTabla");
+    
+      switching = true;
+    
+      //Enviando el orden de la tabla como ascendente:
+    
+      dir = "asc";
+    
+     
+    
+      /*crea un loop que finaliza cuando el switching esta completado:*/
+    
+      while (switching) {
+    
+        //comienza con valor del cabmio como false:
+    
+        switching = false;
+    
+        rows = table.rows;
+    
+        /*el loop recorre todas las columnas de la tabla (exceptuando la primera, ya que contiene el encabezado de la tabla):*/
+    
+        for (i = 1; i < (rows.length - 1); i++) {
+    
+          //Comienza diciendo que no debe haber cambio:
+    
+          shouldSwitch = false;
+    
+          /*Se obtiene los 2 elementos que se quieren comparar, uno de la fila actual y otro de la siguiente:*/
+    
+          x = rows[i].getElementsByTagName("TD")[n];
+    
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+    
+          /*    Comprueba si las dos filas deberian cambiar de lugar, basada en el tipo de orden, asc o desc:*/
+    
+          if (dir == "asc") { //para orden ascendente
+    
+            if ((type=="str" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) > parseFloat(y.innerHTML))) {
+    
+              // si es asi, se marca como cambio y termina el ciclo (loop)
+    
+              shouldSwitch= true;
+    
+              break;
+    
+            }
+    
+          } else if (dir == "desc") { //para orden descendente
+    
+            if ((type=="str" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) < parseFloat(y.innerHTML))) {
+    
+              // si es asi, se marca como cambio y termina el ciclo (loop)
+    
+              shouldSwitch = true;
+    
+              break;
+    
+            }
+    
+          }
+    
+        }
+    
+        if (shouldSwitch) {
+    
+          /*Si se marca un cambio, se realiza el cambio y se marca como completado:*/
+    
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    
+          switching = true;
+    
+          //cada vez que se hace el cambio, el contador aumenta en 1:
+    
+          switchcount ++;
+    
+        } else {
+    
+          /*Si no se ha realizado ningún cambio Y la dirección es "asc", se configura la dirección como "desc" y se ejecuta el ciclo  nuevamente.*/
+    
+          if (switchcount == 0 && dir == "asc") {
+    
+            dir = "desc";
+    
+            switching = true;
+    
+          }
+    
+        }
+    
+      }
+    
+    }
+    
+    </script>
 
 
 {% endblock %}

@@ -7,7 +7,7 @@ class ServicioForm (ModelForm):
 
     class Meta:
         model = Servicio
-        fields = [ 'nombre_servicio', 'valor_servicio', 'id_estado_servicio']
+        fields = [ 'nombre_servicio', 'valor_servicio']
         
 
 
