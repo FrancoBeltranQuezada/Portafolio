@@ -1,11 +1,12 @@
-{% extends 'base/base.html'%}
+{% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 
-<form  method="POST">
+<form action="." method="POST">
     {% csrf_token %}
-    <h3>¿Desea eliminar registro de {{servicio.nombre_servicio}} ?</h3>
+
+    <h1>Desea eliminar el registro de {{ servicio.nombre_servicio }}?</h1>
 
     <button class="btn btn-danger" type="submit">Eliminar</button>
     <a href="{% url 'listar-servicio' %}" class="btn btn-default">Cancelar</a>
