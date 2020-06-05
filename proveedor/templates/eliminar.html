@@ -1,0 +1,14 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form  method="POST">
+    {% csrf_token %}
+    <h3>¿Desea eliminar registro de {{proveedor.nombre_proveedor}} ?</h3>
+
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+    <a href="{% url 'proveedor-home' %}" class="btn btn-default">Cancelar</a>
+</form>    
+
+{% endblock %}
