@@ -53,5 +53,10 @@ def editar_proveedor(request, id_prov):
 
 def eliminar_proveedor(request, id_prov):
     provs = prov.objects.get(id_prov=id_prov)
-    provs.delete()
-    return redirect('proveedor-home')
+
+    if request.method == 'POST':
+        provs.delete()
+        return redirect('proveedor-home')
+    return render(request, 'proveedor/templates/eliminar.html',{'provs':provs})
+
+
