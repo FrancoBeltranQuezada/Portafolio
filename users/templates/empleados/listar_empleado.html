@@ -1,38 +1,9 @@
 {% extends 'base/base.html' %}
 {% block content%}
-<style>
-    .dang {
-	background-color:#ffffff;
-	border-radius:4px;
-	border:1px solid #fa3737;
-	display:inline-block;
-	cursor:pointer;
-	color:#fa3737 !important;
-	font-family:Arial;
-	font-size:14px;
-	padding:10px 20px;
-    text-decoration:none;}
-
-    .warn {
-	background-color:#ffffff;
-	border-radius:4px;
-	border:1px solid #fa9f38;
-	display:inline-block;
-	cursor:pointer;
-	color:#fa9f38 !important;
-	font-family:Arial;
-	font-size:14px;
-	padding:10px 15px;
-    text-decoration:none;
-    
-}
 
 
 
-</style>
-
-
-<div class="mt-3 mb-5" style="text-align: center;">
+<div class="mt-3 mb-5 text-center" >
     <h1> Gestion de Empleados</h1>
 </div>
 
@@ -46,7 +17,7 @@
             <th scope="col">Email</th>
             <th scope="col" style="padding-right: 105px;">Direccion</th>
             <th scope="col">Telefono</th>
-            <th scope="col" style="padding-right: 90px;">Fecha Registro</th>
+            <th scope="col" style="padding-right: 90px;" class="text-nowrap">Fecha Registro</th>
             <th scope="col" style="padding-right: 210px;">Acciones</th>
           </tr>
         </thead>
