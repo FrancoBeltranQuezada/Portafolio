@@ -54,11 +54,11 @@
             {% for user in usuarios %}
           <tr>
             <th scope="row">{{user.id}}</th>
-            <td>{{user.userprofile.rut}}</td>
+            <td>{{user.rut}}</td>
             <td > <a href="{% url 'user-detail' user.id %}">{{user.username}}</a> </td>
             <td>{{user.email}}</td>
-            <td>{{user.userprofile.direccion}}</td>
-            <td>{{user.userprofile.telefono}}</td>
+            <td>{{user.direccion}}</td>
+            <td>{{user.telefono}}</td>
             <td>{{user.date_joined}}</td>
             <td>
                 

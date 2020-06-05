@@ -40,7 +40,7 @@
         <header>SERVIEXPRESS</header>
         <ul>
           {% for group in request.user.groups.all %}
-          {% if group.name == 'empleado' or is_staff %}
+          {% if group.name == 'empleado' or user.is_staff %}
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
           </li>
