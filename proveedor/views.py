@@ -28,6 +28,7 @@ def crear_proveedor (request):
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Guardado correctamente"
+        return redirect('proveedor-home')
 
     return render (request,'proveedor/templates/crear.html', data)
 
