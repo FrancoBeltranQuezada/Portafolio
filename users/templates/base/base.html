@@ -26,28 +26,34 @@
     <title>Serviexpress</title>
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/navCss.css" />
+    <link rel="stylesheet" href="/static/css/tablas.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
+  <style>
 
-  <body>
+  </style>
+
+  <body class="bg-white">
     <div>
       <input type="checkbox" id="check" />
       <label for="check">
         <i class="fas fa-bars" id="btn"></i>
-        <i class="fas fa-times"  id="cancel"></i>
+        <i class="fas fa-times" id="cancel"></i>
       </label>
       <div class="sidebar">
         <header>SERVIEXPRESS</header>
         <ul>
-          {% for group in request.user.groups.all %}
-          {% if group.name == 'empleado' or user.is_staff %}
+
           <li>
-            <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
+            <a href="{% url 'user-list' %}"
+              ><i class="fas fa-qrcode"></i>Gestion Clientes</a
+            >
           </li>
-          {% endif %}
-          {% endfor %}
+
           <li>
-            <a href="{% url 'empleado-list' %}"><i class="fas fa-link"></i>Gestion Empleados</a>
+            <a href="{% url 'empleado-list' %}"
+              ><i class="fas fa-link"></i>Gestion Empleados</a
+            >
           </li>
           <li>
             <a href="#"><i class="fas fa-stream"></i>Gestion Boletas</a>
@@ -56,29 +62,34 @@
             <a href="#"><i class="fas fa-calendar-week"></i>Gestion Pedidos</a>
           </li>
           <li>
-            <a href="#"><i class="far fa-question-circle"></i>Recepcion productos</a>
+            <a href="#"
+              ><i class="far fa-question-circle"></i>Recepcion productos</a
+            >
           </li>
           <li>
             <a href="#"><i class="fas fa-sliders-h"></i>Gestion Proveedor</a>
           </li>
           <li>
-            <a href="{% url 'listar-servicio' %}"><i class="far fa-envelope"></i>Gestion Servicios</a>
-          </li> 
+            <a href="{% url 'listar-servicio' %}"
+              ><i class="far fa-envelope"></i>Gestion Servicios</a
+            >
+          </li>
           <li>
             <a href="#"><i class="far fa-envelope"></i>Gestion Reservas</a>
-          </li> 
+          </li>
           <li>
             <a href="#"><i class="far fa-envelope"></i>Informes</a>
-          </li> 
+          </li>
           {% if user.is_authenticated%}
           <li>
-            <a href="{% url 'logout'%}"><i class="far fa-envelope"></i>Cerrar sesión</a>
+            <a href="{% url 'logout'%}"
+              ><i class="far fa-envelope"></i>Cerrar sesión</a
+            >
           </li>
           {% endif %}
         </ul>
       </div>
     </div>
-   
 
     <div class="container">
       {% block content %}{% endblock %}
