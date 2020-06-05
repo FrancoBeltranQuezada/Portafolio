@@ -15,10 +15,10 @@
         
                 </fieldset>
                 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <th scope="col">Nombre</th>
+                <th scope="col" style="width: 70%;">Nombre</th>
                 <th>Opcion</th>
             </tr>
         </thead>
@@ -27,8 +27,17 @@
              <tr>
                 <th scope="row">{{prov.nombre_proveedor}}</th>
                 <th>
-                    <a href="{% url 'editar_proveedor' prov.id_prov %}" class="btn btn-primary">editar</a>
-                    <a href="{% url 'eliminar_proveedor' prov.id_prov %}" class="btn btn-primary">eliminar</a>
+                    <div class="row">
+                        <div class="col6">
+                            <a href="{% url 'editar_proveedor' prov.id_prov %}" class="btn dang ">editar</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'eliminar_proveedor' prov.id_prov %}" class="btn warn ">eliminar</a>
+                        </div>
+                    </div>
+                  
+                    
+                    
                     <!---<input href="{%url 'editar_proveedor' prov.pk%}" class="btn blue-gradient"type="submit" value="Editar">
                     <input class="btn peach-gradient" type="reset" value="Eliminar"> -->
                 </th>
@@ -39,8 +48,8 @@
         </tbody>
     </table>        
                     
-                <div>
-                    <a href="/proveedor/crear_proveedor" class="btn btn-primary">Nuevo Proveedor</a>
+                <div class="text-center">
+                    <a href="/proveedor/crear_proveedor" class="btn ">Nuevo Proveedor</a>
                 </div>
                     
                 
@@ -48,12 +57,7 @@
               
         
             </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    need an Account
-                    <a class="ml-2" href="{% url 'register' %}">SingUp Now</a>
-                </small>
-            </div>
+           
         </div>
     </div>
     {% endblock %}

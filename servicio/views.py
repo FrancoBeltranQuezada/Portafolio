@@ -54,7 +54,6 @@ def eliminar_servicio(request, id_servicio):
     servicio = Servicio.objects.get(id_servicio=id_servicio)
 
     if request.method == 'POST':
-        
         servicio.delete()
         return redirect('listar-servicio')
 

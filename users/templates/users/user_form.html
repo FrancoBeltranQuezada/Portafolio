@@ -35,13 +35,13 @@
                     
 
                     {% csrf_token %}
-                    {{ user_form }}
-                    {{ profile_form.as_p }}
+                    {{ form }}
+                    
                     
         
                 </fieldset>
                 <div class="form-group">
-                    <button class="" type="submit">
+                    <button class="btn btn-primary" type="submit">
                         Crear Usuario
                     </button>
                 </div>

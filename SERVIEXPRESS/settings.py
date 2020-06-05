@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     'localhost:1521/XE',
+    'NAME':     'localhost:1522/XE',
     'USER':     'C##DJANGO',
     'PASSWORD': 'django',
     
@@ -141,4 +141,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Pagina a la que redirecciona luego de logearte
-LOGIN_REDIRECT_URL = 'producto-home'
+LOGIN_REDIRECT_URL = 'home'
+AUTH_USER_MODEL = 'users.User'
