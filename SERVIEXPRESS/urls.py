@@ -28,6 +28,7 @@ urlpatterns = [
     path('proveedor/',include('proveedor.urls')),
     path('servicio/', include ('servicio.urls')),
     path('usuario/',include('users.urls')),
+    path('accounts/login/',auth_views.LoginView.as_view(template_name ='users/login.html'), name='login'),
      
 
 ]
