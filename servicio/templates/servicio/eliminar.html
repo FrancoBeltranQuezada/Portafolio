@@ -6,7 +6,7 @@
 <form method="POST">
     {% csrf_token %}
 
-    <h1>Desea eliminar el registro de {{ servicio.nombre_servicio }}?</h1>
+    <h1>Desea eliminar este registro?</h1>
 
     <button class="btn btn-danger" type="submit">Eliminar</button>
     <a href="{% url 'listar-servicio' %}" class="btn btn-default">Cancelar</a>

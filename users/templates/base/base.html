@@ -39,7 +39,7 @@
       <div class="sidebar">
         <header>SERVIEXPRESS</header>
         <ul>
-          
+          {% if admin_only%} 
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
           </li>
@@ -62,12 +62,15 @@
           <li>
             <a href="{% url 'listar-servicio' %}"><i class="far fa-envelope"></i>Gestion Servicios</a>
           </li> 
+          {% endif %}
           <li>
-            <a href="#"><i class="far fa-envelope"></i>Gestion Reservas</a>
-          </li> 
+            <a href="#"><i class="far fa-envelope"></i>Reservas</a>
+          </li>
+          {% if request.user.is_staff %} 
           <li>
             <a href="#"><i class="far fa-envelope"></i>Informes</a>
           </li> 
+          {% endif %}
           {% if user.is_authenticated%}
           <li>
             <a href="{% url 'logout'%}"><i class="far fa-envelope"></i>Cerrar sesión</a>
