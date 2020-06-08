@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .mixin import GroupRequiredMixin
 from django.contrib.auth.models import Group
 from .models import User
+from .decorators import unaunthenticated_user, allowed_users
 
 # Create your views here.
 
@@ -26,7 +27,7 @@ def homeview(request):
 def ErrorView(request):
     return render(request, 'base/error.html')
 
-
+@unaunthenticated_user
 def register(request):
     # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
     if request.method == 'POST':
@@ -93,7 +94,7 @@ def registrarEmpleado(request):
         if form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
             # se define el grupo empleado como empleado
-            empleado = Group.objects.get(name='empleado')
+            empleado = Group.objects.get(name='admin')
             # se le asigna el grupo cliente al usuario que se va a crear
             empleado.user_set.add(user)
             # se guarda el usuario con los datos de los campos del form y el grupo empleado

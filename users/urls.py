@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('error',ErrorView,name='error'),
-    path('',homeview, name='home'),
+    path('',login_required(homeview), name='home'),
 
     #Urls vistas clientes
     path('gestion-clientes/',login_required(UserListView.as_view()),name="user-list"),

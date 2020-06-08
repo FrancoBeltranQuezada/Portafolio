@@ -18,6 +18,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as users_views
 
+
 urlpatterns = [
     path('',include('users.urls') ),
     path('admin/', admin.site.urls),
