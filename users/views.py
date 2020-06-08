@@ -48,7 +48,7 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-class UserListView(ListView):
+class UserListView(GroupRequiredMixin,ListView):
     group_required = [u'empleado', u'manager']
     model = User
     template_name = 'users/listar_user.html'
