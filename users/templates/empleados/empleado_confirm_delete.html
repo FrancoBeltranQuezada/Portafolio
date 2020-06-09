@@ -5,9 +5,10 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <h1>Desea eliminar a {{user.username}}?</h1>
-    <button  type="submit" class="btn btn-danger">si</button>
-    <a  href="{% url 'empleado-list' %}"   class="btn btn-primary">Cancelar</a>
+    <h1>¿Desea eliminar a {{user.username}}?</h1>
+    <a  href="{% url 'empleado-list' %}"   class="btn volv">Volver</a>
+    <button  type="submit" class="btn dang">Eliminar</button>
+    
 
 </form>
 {% endblock %}
