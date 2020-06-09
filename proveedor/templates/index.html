@@ -18,13 +18,15 @@
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col" style="width: 70%;">Nombre</th>
+                <th scope="col" style="width: 20%;">ID</th>
+                <th scope="col" style="width: 50%;">Nombre</th>
                 <th>Opcion</th>
             </tr>
         </thead>
         <tbody>
     {% for prov in provs %}
              <tr>
+                <th scope="row">{{prov.id_prov}}</th>
                 <th scope="row">{{prov.nombre_proveedor}}</th>
                 <th>
                     <div class="row">

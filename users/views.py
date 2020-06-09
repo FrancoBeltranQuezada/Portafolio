@@ -27,8 +27,8 @@ def homeview(request):
 def ErrorView(request):
     return render(request, 'base/error.html')
 
-@unaunthenticated_user
-def register(request):
+
+def register(request): #Registro cliente
     # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -50,7 +50,7 @@ def register(request):
 
 
 class UserListView(GroupRequiredMixin,ListView):
-    group_required = [u'empleado', u'manager']
+    group_required = [u'empleado', u'admin']
     model = User
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
@@ -58,7 +58,7 @@ class UserListView(GroupRequiredMixin,ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='1')
+        return User.objects.filter(groups='2')
 
 
 class UserDetailView(DetailView):
@@ -94,7 +94,7 @@ def registrarEmpleado(request):
         if form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
             # se define el grupo empleado como empleado
-            empleado = Group.objects.get(name='admin')
+            empleado = Group.objects.get(name='empleado')
             # se le asigna el grupo cliente al usuario que se va a crear
             empleado.user_set.add(user)
             # se guarda el usuario con los datos de los campos del form y el grupo empleado
@@ -117,7 +117,7 @@ class EmpleadoListView(ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='2')
+        return User.objects.filter(groups='21')
 
 
 class EmpleadoDetailView(DetailView):
