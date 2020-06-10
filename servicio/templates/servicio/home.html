@@ -81,9 +81,9 @@
                 <td>{{servicio.nombre_servicio}}</td>
                 <td>{{servicio.valor_servicio}}</td>
                 <td>{{servicio.id_estado_servicio}}</td>
-                <td><a href="{% url 'actualizar-servicio' servicio.id_servicio %}" class="btn blue-gradient">Actualizar
+                <td><a href="{% url 'actualizar-servicio' servicio.id_servicio %}" class="btn warn">Actualizar
                 </a>
-                <a href="{% url 'eliminar-servicio' servicio.id_servicio %}" class="btn btn-danger">Eliminar
+                <a href="{% url 'eliminar-servicio' servicio.id_servicio %}" class="btn dang">Eliminar
     
                 </a>
             </td>
@@ -103,7 +103,7 @@
     </table>
     
     <div style="text-align: center;">
-        <a href="/servicio/registrar/" class="btn btn-primary" style="border-radius:35px;">Nuevo Servicio</a>
+        <a href="/servicio/registrar/" class="btn " >Nuevo Servicio</a>
     </div>
     
     

@@ -5,11 +5,11 @@
 
 <form  method="POST">
     {% csrf_token %}
-    <h3>¿Desea eliminar registro de {{proveedor.nombre_proveedor}} ?</h3>
+    <h3>¿Desea eliminar registro de {{provs.nombre_proveedor}} ?</h3>
 
     
     <a href="{% url 'proveedor-home' %}" class="btn volv">Volver</a>
     <button class="btn dang" type="submit">Eliminar</button>
 </form>    
 
-{% endblock %}
+{% endblock %}  

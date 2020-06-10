@@ -40,20 +40,20 @@
       <div class="sidebar">
         <header>SERVIEXPRESS</header>
         <ul>
-          {% if request.user|has_group:'admin' or request.user|has_group:'empleado' %} 
+          {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
           </li>
           {% endif %}
           
-          {% if request.user|has_group:'admin' %} 
+          {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
             <a href="{% url 'empleado-list' %}"><i class="fas fa-link"></i>Gestion Empleados</a>
           </li>
           {% endif %}
           
 
-          {% if request.user|has_group:'admin' or request.user|has_group:'empleado' %} 
+          {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
             <a href="#"><i class="fas fa-stream"></i>Gestion Boletas</a>
           </li>
@@ -69,7 +69,7 @@
           {% endif %}
           
 
-          {% if request.user|has_group:'admin'%} 
+          {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
             <a href="{% url 'listar-servicio' %}"><i class="far fa-envelope"></i>Gestion Servicios</a>
           </li> 
@@ -79,7 +79,7 @@
             <a href="#"><i class="far fa-envelope"></i>Reservas</a>
           </li>
 
-          {% if request.user|has_group:'admin'%} 
+          {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
             <a href="#"><i class="far fa-envelope"></i>Informes</a>
           </li> 

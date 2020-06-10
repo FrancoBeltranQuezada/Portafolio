@@ -59,4 +59,4 @@ def eliminar_servicio(request, id_servicio):
         return redirect('listar-servicio')
 
     
-    return render (request, 'servicio/eliminar.html', {'servicios':servicio})
+    return render (request, 'servicio/eliminar.html', {'servicio':servicio})

@@ -60,7 +60,7 @@ class UserListView(GroupRequiredMixin,ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='2')
+        return User.objects.filter(groups='1')
 
 
 class UserDetailView(DetailView):
@@ -119,7 +119,7 @@ class EmpleadoListView(ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='21')
+        return User.objects.filter(groups='2')
 
 
 class EmpleadoDetailView(DetailView):
