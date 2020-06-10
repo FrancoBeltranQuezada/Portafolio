@@ -92,6 +92,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+* _Ahora debemos hacer correr nuestro script para poblar las tablas necesarias para el funcionamiento del proyecto_
+```
+script_poblar_tablas.sql
+```
+
 * _Luego de crear nuestro superusuario y hacer nuestras migraciones podremos correr nuestro servidor del proyecto, para ello debemos ejecutar el comando:_
 ```
 python manage.py runserver

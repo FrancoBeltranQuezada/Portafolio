@@ -7,8 +7,9 @@
     {% csrf_token %}
     <h3>¿Desea eliminar registro de {{proveedor.nombre_proveedor}} ?</h3>
 
-    <button class="btn btn-danger" type="submit">Eliminar</button>
-    <a href="{% url 'proveedor-home' %}" class="btn btn-default">Cancelar</a>
+    
+    <a href="{% url 'proveedor-home' %}" class="btn volv">Volver</a>
+    <button class="btn dang" type="submit">Eliminar</button>
 </form>    
 
 {% endblock %}

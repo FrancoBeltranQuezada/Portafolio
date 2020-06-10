@@ -22,6 +22,26 @@
 
     <title>Document</title>
 </head>
+<style>
+    
+
+    #id_email, #id_password1,#id_password2 {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
+
 <body>
     <div class="container">
         <div class="content-section">
@@ -29,26 +49,136 @@
               <!-- token de seguridad de django -->  
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4"> Join Today</legend>
-                    <!-- Aqui se imprime el formulario de usuario  --> 
+                    <div class="my-1">
+                        <h1 class="border-bottom text-center "> Registrate</h1>
+                    </div>
                     
-                    {{ form|crispy }}
+                    <!-- Aqui se imprime el formulario de usuario  --> 
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-12 col-xl-4">
+                            <div class="col my-3">
+                                <label for=""><strong>Personal</strong> </label>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Nombre</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.first_name  }}
+                                </div>
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Apellidos</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.last_name }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Rut</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.rut }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col my-3">
+                                <label for=""><strong>Contacto</strong> </label>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Telefono</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.telefono }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Correo</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.email }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Dirección</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.direccion }}
+                                </div>
+                                
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-4">
+
+                            <div class="col my-3">
+                                <label for=""><strong>Usuario</strong> </label>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Nombre de Usuario</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.username }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Contraseña</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.password1 }}
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <label for="">Confirmar Contraseña</label>
+                                </div>
+                                <div class="col">
+                                    {{ form.password2 }}
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
                     
         
                 </fieldset>
-                <div class="form-group">
-                    <button class="btn peach-gradient" type="submit">
+                <div class="form-group text-center mb-0">
+                    <button class="btn bt" type="submit">
                         Registrate ahora
                     </button>
                 </div>
+                <div class=" text-center mb-3">
+                    <small class="text-muted ">
+                        Ya tienes una cuenta?
+                        <a class="ml-2" href="{% url 'login' %}">Logeate</a>
+                    </small>
+                </div>
         
             </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Ya tienes una cuenta?
-                    <a class="ml-2" href="{% url 'login' %}">Log In</a>
-                </small>
-            </div>
+            
         </div>
     </div>
 

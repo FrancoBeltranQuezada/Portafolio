@@ -35,14 +35,15 @@
                 
                     <div class="row">
                         <div class="col-6">
-                            <a href="{% url 'user-delete' user.id %}"class="btn dang" >
-                                Eliminar
-                           </a>
+                          <a href="{% url 'user-update' user.id %}" class="btn warn" style="color:black;">
+                            Actualizar
+                       </a>
+                            
                         </div>
                         <div class="col-6">
-                            <a href="{% url 'user-update' user.id %}" class="btn warn" style="color:black;">
-                                Actualizar
-                           </a>
+                          <a href="{% url 'user-delete' user.id %}"class="btn dang" >
+                            Eliminar
+                       </a>
                         </div>
                     </div>
             
@@ -60,12 +61,10 @@
   
 
     <div style="text-align:center;">
-        <a class="btn" href="{% url 'register' %}">
+        <a class="btn bt" href="{% url 'register' %}" style="color:white; background:black;">
             Crear Nuevo Cliente
         </a>
     </div>
-
-
 
 
 {% endblock %}
