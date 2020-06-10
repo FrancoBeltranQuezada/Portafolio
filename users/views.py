@@ -51,8 +51,8 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-class UserListView(ListView):
-   # group_required = [u'empleado', u'manager']
+class UserListView(GroupRequiredMixin,ListView):
+    group_required = [u'empleado', u'admin']
     model = User
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
@@ -60,7 +60,7 @@ class UserListView(ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='1')
+        return User.objects.filter(groups='2')
 
 
 class UserDetailView(DetailView):
@@ -96,7 +96,7 @@ def registrarEmpleado(request):
         if form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
             # se define el grupo empleado como empleado
-            empleado = Group.objects.get(name='admin')
+            empleado = Group.objects.get(name='empleado')
             # se le asigna el grupo cliente al usuario que se va a crear
             empleado.user_set.add(user)
             # se guarda el usuario con los datos de los campos del form y el grupo empleado
@@ -119,7 +119,7 @@ class EmpleadoListView(ListView):
 
     def get_queryset(self):
 
-        return User.objects.filter(groups='2')
+        return User.objects.filter(groups='21')
 
 
 class EmpleadoDetailView(DetailView):
@@ -147,3 +147,16 @@ def UpdateEmpleadoView(request, pk):
     else:
         form = UserForm(instance=user)
     return render(request, 'users/user_form.html', {'form': form})
+
+
+
+
+
+
+def mi_vista(request):
+    # Tu código
+    es_admin = request.user.groups.filter(name='admin').exists()
+    return render(request, 'index.html', {
+        # Tus otras variables del contexto
+        'es_admin': es_admin
+    })
