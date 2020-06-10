@@ -20,14 +20,16 @@ from .decorators import unaunthenticated_user, allowed_users
 def homeview(request):
     username = None
     if request.user.is_authenticated:
+        group = request.user.groups.all()
+        
         username = request.user.first_name
-    return render(request, 'users/home.html',{'username':username})
+    return render(request, 'users/home.html',{'username':username,'group':group})
 
 
 def ErrorView(request):
     return render(request, 'base/error.html')
 
-@unaunthenticated_user
+
 def register(request):
     # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
     if request.method == 'POST':
@@ -49,8 +51,8 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-class UserListView(GroupRequiredMixin,ListView):
-    group_required = [u'empleado', u'manager']
+class UserListView(ListView):
+   # group_required = [u'empleado', u'manager']
     model = User
     template_name = 'users/listar_user.html'
     context_object_name = 'usuarios'
