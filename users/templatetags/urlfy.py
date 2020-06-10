@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 from django import template
+from django.contrib.auth.models import Group
 
 register = template.Library()
-@register.filter('has_group')
+@register.filter(name='has_group')
 def has_group(user, group_name):
-    """
-    Verifica se este usuário pertence a un grupo
-    """
-    groups = user.groups.all().values_list('name', flat=True)
-    return True if group_name in groups else False
+    try:
+        group =  Group.objects.get(name=group_name)
+    except Group.DoesNotExist:
+        return False
+
+    return group in user.groups.all()

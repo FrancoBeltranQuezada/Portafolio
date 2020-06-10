@@ -145,3 +145,16 @@ def UpdateEmpleadoView(request, pk):
     else:
         form = UserForm(instance=user)
     return render(request, 'users/user_form.html', {'form': form})
+
+
+
+
+
+
+def mi_vista(request):
+    # Tu código
+    es_admin = request.user.groups.filter(name='admin').exists()
+    return render(request, 'index.html', {
+        # Tus otras variables del contexto
+        'es_admin': es_admin
+    })
