@@ -112,3 +112,4 @@ Quit the server with CTRL-BREAK.
 * [http://127.0.0.1:8000/](http://127.0.0.1:8000/) - Puedes Acceder directo desde aquí
 * _Una vez dentro ya puedes comenzar a utilizar el software de gestión de **ServiExpress**_
 * De momento debes **asignarle el grupo admin al superusuario para poder hacer uso de todos los modulos** para ello debes ir a http://127.0.0.1:8000/ ir a usuarios, seleccionar el superuser creado y hacer dobleclick en el grupo admin
+* Los usuarios creados desde el registrar del login, son asignados como clientes, permitiendo ver solo las vistas estipuladas en las reglas de negocio, pero al entrar con el super user admin 
