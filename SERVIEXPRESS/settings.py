@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'reserva.apps.ReservaConfig',
     'users.apps.UsersConfig',
     'servicio.apps.ServicioConfig',
     'producto.apps.ProductoConfig',
