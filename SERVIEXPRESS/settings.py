@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'servicio.apps.ServicioConfig',
     'producto.apps.ProductoConfig',
     'proveedor.apps.ProveedorConfig',
+    'boleta.apps.BoletaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
