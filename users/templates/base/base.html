@@ -55,13 +55,13 @@
 
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
-            <a href="#"><i class="fas fa-stream"></i>Gestion Boletas</a>
+            <a href="#"><i class="fas fa-stream"></i>Gestion Boletas**</a>
           </li>
           <li>
-            <a href="#"><i class="fas fa-calendar-week"></i>Gestion Pedidos</a>
+            <a href="#"><i class="fas fa-calendar-week"></i>Gestion Pedidos**</a>
           </li>
           <li>
-            <a href="#"><i class="far fa-question-circle"></i>Recepcion productos</a>
+            <a href="#"><i class="far fa-question-circle"></i>Recepcion productos**</a>
           </li>
           <li>
             <a href="{% url 'proveedor-home' %}"><i class="fas fa-sliders-h"></i>Gestion Proveedor</a>
@@ -76,12 +76,12 @@
           {% endif %}
 
           <li>
-            <a href="#"><i class="far fa-envelope"></i>Reservas</a>
+            <a href="#"><i class="far fa-envelope"></i>Reservas**</a>
           </li>
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="#"><i class="far fa-envelope"></i>Informes</a>
+            <a href="#"><i class="far fa-envelope"></i>Informes**</a>
           </li> 
           {% endif %}
 
