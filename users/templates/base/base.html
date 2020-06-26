@@ -28,6 +28,11 @@
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/navCss.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+
+    
+
+  
   </head>
 
   <body>
@@ -108,5 +113,27 @@
     <script type="text/javascript" src="/static/js/mdb.min.js"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
+
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Popper.js -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+
+<!-- Bootstrap -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- Material Design for Bootstrap -->
+<script src="{% static 'js/mdb.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+
+<script>
+  $('.asd').datepicker({
+  format: "dd/mm/yyyy",
+  weekStart: 1
+});
+</script>
   </body>
+
+  
 </html>

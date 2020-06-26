@@ -9,6 +9,9 @@ class Servicio (models.Model):
     valor_servicio = models.IntegerField(null=False)   
     id_estado_servicio = models.ForeignKey('EstadoServicio', on_delete = models.SET_NULL, null= True) 
 
+    def __str__(self):
+        return self.nombre_servicio
+    
 
 
 class EstadoServicio (models.Model):

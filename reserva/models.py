@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from servicio.models import Servicio
 
 
 class ModuloTiempo(models.Model):
@@ -21,7 +22,11 @@ class Reserva(models.Model):
     marca = models.CharField(max_length=30,help_text="Ingrese marca")
     modelo = models.CharField(max_length=30,help_text="Ingrese modelo")
     modulo_tiempo = models.ForeignKey(ModuloTiempo,null=True,blank=True,on_delete=models.CASCADE)
+    servicio = models.ForeignKey(Servicio,null=True,blank=True,on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.id_reserva) 
+        a = str(self.id_reserva) 
+        b =str(self.rut_usuario)
+        c = str(self.modulo_tiempo)
+        return a +" "+ b +" " + c
 
