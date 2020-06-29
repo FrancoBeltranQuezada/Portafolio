@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h1>¿Desea eliminar la reserva N° {{reserva.id_reserva}}?</h1>
+    <a  href="{% url 'listar-reserva' %}"   class="btn volv">Volver</a>
+    <button  type="submit" class="btn dang">Eliminar</button>
+    
+
+</form>
+{% endblock %}

@@ -17,7 +17,7 @@ class ModuloTiempo(models.Model):
 class Reserva(models.Model):
     id_reserva = models.IntegerField(primary_key=True)
     fecha = models.DateField()
-    rut_usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
     patente = models.CharField(max_length=30,help_text="Ingrese Patente")
     marca = models.CharField(max_length=30,help_text="Ingrese marca")
     modelo = models.CharField(max_length=30,help_text="Ingrese modelo")
@@ -26,7 +26,7 @@ class Reserva(models.Model):
 
     def __str__(self):
         a = str(self.id_reserva) 
-        b =str(self.rut_usuario)
+        b =str(self.usuario)
         c = str(self.modulo_tiempo)
         return a +" "+ b +" " + c
 
