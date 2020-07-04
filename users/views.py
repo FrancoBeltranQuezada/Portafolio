@@ -13,6 +13,7 @@ from .mixin import GroupRequiredMixin
 from django.contrib.auth.models import Group
 from .models import User
 from .decorators import unaunthenticated_user, allowed_users
+from datetime import datetime
 
 # Create your views here.
 
@@ -23,7 +24,7 @@ def homeview(request):
         group = request.user.groups.all()
         
         username = request.user.first_name
-    return render(request, 'users/home.html',{'username':username,'group':group})
+    return render(request, 'users/home.html',{'username':username,'group':group,'time':datetime.now()})
 
 
 def ErrorView(request):
