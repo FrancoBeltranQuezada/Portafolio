@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 from django.db import models
 from servicio.models import Servicio
@@ -10,8 +10,8 @@ from users.models import User
 
 class Boleta (models.Model):
     id_boleta = models.IntegerField(primary_key=True)
-    fecha = models.DateField(auto_now_add=True)
-    hora = models.TimeField(auto_now_add=True)
+    fecha = models.DateField()
+    hora = models.TimeField(default=timezone.now)
     total = models.IntegerField()
     usuario = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
     #id_forma_pago = models.ForeignKey('', on_delete = models.SET_NULL)

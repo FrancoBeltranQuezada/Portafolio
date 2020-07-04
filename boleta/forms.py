@@ -10,7 +10,7 @@ class DetalleBoletaForm(forms.ModelForm):
         model = DetalleBoleta
         fields = '__all__'
         widgets = {
-            'servicio': forms.Select(attrs={'class': 'form-control'}),
+            'servicio': forms.Select(attrs={'class': 'form-control select2'}),
             'desc_prod': forms.NumberInput(attrs={'class':'form-control', 'placeholder': 'Ingrese descuento'}),
             'cantidad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese cantidad'}),
             'precio': forms.NumberInput(attrs={'class': 'form-control'})
@@ -24,13 +24,10 @@ class BoletaForm (forms.ModelForm):
         model = Boleta
         fields = '__all__'
         widgets = {
-            'fecha':forms.DateInput(format = '%Y-%m-%d', attrs={'class': 'form-control', 'value': datetime.now().strftime('%Y-%m-%d')}),
-            'usuario': forms.Select(attrs = {'class': 'form-control'}),
-            'total': forms.NumberInput(attrs={'class': 'form-control'})
+            'fecha':forms.DateInput(attrs={'class': 'form-control  asd','id':'datepicker','placeholder':'Selected date','autocomplete':'off'}),
+            'usuario': forms.Select(attrs = {'class': 'form-control select2'}),
+            'total': forms.NumberInput(attrs={'class': 'form-control', 'readonly': True})
         }
-
-
-
 
 
 

@@ -4,6 +4,7 @@ from .forms import DetalleBoletaForm, BoletaMultiForm
 from servicio.models import Servicio
 from django.shortcuts import redirect
 from .models import Boleta, DetalleBoleta
+from datetime import datetime
 
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -12,10 +13,16 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 
 class RegistrarBoleta(CreateView):
-    model = Boleta
+    model = DetalleBoleta
     form_class = BoletaMultiForm
     
     template_name = "boleta/registro_boleta.html"
 
-    
+
+
+def a_view(request):
+    return render_to_response("boleta/registro.html", {
+        'time':datetime.now(),
+        }, context_instance=RequestContext(request))    
+
     
