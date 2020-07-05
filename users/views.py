@@ -35,14 +35,17 @@ def register(request):
     # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+        
+        if form.is_valid() and form2.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
+            
             # se define el grupo cliente como cliente
             cliente = Group.objects.get(name='cliente')
             # se le asigna el grupo cliente al usuario que se va a crear
             cliente.user_set.add(user)
             # se guarda el usuario con los datos de los campos del form y el grupo cliente
             user.save()
+            
             username = form.cleaned_data.get('username')
             # se envia mensaje de confirmacion y redirecciona
             messages.success(request, f'Acount created for {username}!')

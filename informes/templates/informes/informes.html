@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %} {% block content %}
+<h6>holi</h6>
+<h6>data: {{data}}</h6>
+
+<h6>{{labels}}</h6>
+
+<canvas id="reserva-chart" data-url="{% url 'informes' %}"></canvas>
+
+
+{% endblock %}
