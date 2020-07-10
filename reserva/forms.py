@@ -3,6 +3,7 @@ from .models import Reserva, Servicio, ModuloTiempo
 
 
 
+
 class DateInputx(forms.DateInput):
     input_type = 'date'
 
@@ -22,3 +23,5 @@ class ReservaForm(forms.ModelForm):
             }
         exclude ={
             'id_reserva','usuario'}
+    
+

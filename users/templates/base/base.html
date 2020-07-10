@@ -43,8 +43,11 @@
         <i class="fas fa-times"  id="cancel"></i>
       </label>
       <div class="sidebar">
-        <header>SERVIEXPRESS</header>
+        <header style="display: none;">SERVIEXPRESS</header>
         <ul>
+          <li>
+            <a href="{% url 'home' %}">SERVIEXPRESS</a>
+          </li>
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
@@ -135,7 +138,8 @@
 <script>
   $('.asd').datepicker({
   format: "dd/mm/yyyy",
-  weekStart: 1
+  weekStart: 1,
+  language: 'pt-BR'
 });
 
   $(function () {
