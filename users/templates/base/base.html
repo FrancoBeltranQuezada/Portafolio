@@ -89,7 +89,7 @@
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="#"><i class="far fa-envelope"></i>Informes**</a>
+            <a href="{% url 'dashboard' %}"><i class="far fa-envelope"></i>Informes**</a>
           </li> 
           {% endif %}
 
