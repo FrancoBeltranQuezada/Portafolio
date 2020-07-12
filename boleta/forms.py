@@ -11,7 +11,7 @@ class DetalleBoletaForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'servicio': forms.Select(attrs={'class': 'form-control select2'}),
-            'desc_prod': forms.NumberInput(attrs={'class':'form-control', 'placeholder': 'Ingrese descuento'}),
+            'desc_prod': forms.Textarea(attrs={'class':'form-control'}),
             'cantidad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese cantidad'}),
             'precio': forms.NumberInput(attrs={'class': 'form-control'})
             

@@ -5,6 +5,7 @@ from servicio.models import Servicio
 from django.shortcuts import redirect
 from .models import Boleta, DetalleBoleta
 from datetime import datetime
+from datetime import date
 
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -12,17 +13,30 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 # Create your views here.
 
 
-class RegistrarBoleta(CreateView):
-    model = DetalleBoleta
-    form_class = BoletaMultiForm
+
+def home (request):
     
-    template_name = "boleta/registro_boleta.html"
+    data = {'time':datetime.now()}
+    return render(request,'boleta/registro_boleta.html',data )    
 
 
+def registrar_boleta (request):
 
-def a_view(request):
-    return render_to_response("boleta/registro.html", {
-        'time':datetime.now(),
-        }, context_instance=RequestContext(request))    
+    now = datetime.now()
+    format = now.strftime('%d-%m-%Y')
 
-    
+    data = {
+        'form': BoletaMultiForm(),
+        'time': format
+    }
+
+    if request.method == 'POST':
+        formulario = BoletaMultiForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Guardado correctamente"
+        else:
+            data['mensaje'] = "Boleta no se pudo guardar correctamente"
+
+
+    return render (request,'boleta/registro_boleta.html', data)

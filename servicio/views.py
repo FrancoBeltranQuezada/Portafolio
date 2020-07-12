@@ -25,6 +25,9 @@ def registrar_servicio (request):
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Guardado correctamente"
+        else:
+            data['mensaje'] = "Servicio no se pudo guardar correctamente"
+
 
     return render (request,'servicio/registrar.html', data)
 

@@ -1,10 +1,8 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
-{% load static %}
+
 {% block content %}
 
-<!--estilos CSS-->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
 
 <div>
@@ -21,14 +19,9 @@
                     <h3 class="card-title">Detalles de productos</h3>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Buscador</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-append">
-                                <button type="button" class="btn btn-info">Limpiar!</button>
-                            </span>
-                        </div>
+                    <div class="input-group">
+                        {{form.detalleBoleta.servicio}}
+                        
                     </div>
                     <hr>
                     <table class="table table-bordered " id="miTabla">
@@ -55,8 +48,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Fecha Boleta</label>
-                        {{form.boleta.fecha}}  <!--Queda pendiente terminar el template-->
+                        <label for="">Fecha Boleta: </label>
+                        {{time}}  <!--Queda pendiente terminar el template-->
                     </div>
 
                     <div class="form-group">
@@ -64,10 +57,7 @@
                         {{form.boleta.usuario}}
                     </div>
 
-                    <div class="form-group">
-                        <label for="">Descuento Producto</label>
-                        {{form.detalleBoleta.desc_prod}}
-                    </div>
+                   
 
                     <div class="form-group">
                         <label for="">Total</label>
@@ -78,6 +68,15 @@
             </div>
               
           </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a
+          
+          class="btn"
+          style="color: white; background: black;"
+          >Crear boleta</a
+        >
       </div>
 
 </div>
