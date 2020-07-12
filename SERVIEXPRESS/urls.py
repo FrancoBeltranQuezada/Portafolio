@@ -32,6 +32,7 @@ urlpatterns = [
     path('accounts/login/',auth_views.LoginView.as_view(template_name ='users/login.html'), name='login'),
     path('reserva/',include('reserva.urls')),
     path('boleta/', include('boleta.urls')),
+    path('informes/',include('informes.urls')),
      
 
 ]

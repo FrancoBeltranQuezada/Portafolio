@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %} {% block content %}
+{% load informes_tags %}
+
+
+<div class="mt-3 mb-5" style="text-align: center;">
+    <h1> Dashboard</h1>
+</div>
+<div class="row">
+    <div class="col-6">
+        {% show_reservas_hoy %}
+      </div>
+      <div class="col-6">
+          {% show_reservas_mañana %}
+      </div>
+</div>
+<div class="row">
+    <div class="col-6 mx-auto">
+        <label for="">Cantidad Total de reservas: <strong>{% total_reservas %}</strong> </label>
+        <canvas id="reserva-chart" data-url="{% url 'informes' %}"></canvas>
+        
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

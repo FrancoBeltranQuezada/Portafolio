@@ -9,6 +9,7 @@ class CrearReserva(CreateView):
     form_class = ReservaForm
     success_url = "../gestion-reserva/"
     template_name = "reserva/reserva_create.html"
+    
 
     #este metodo nos permite asignar el usuario que está actualmente logeado a nuestra reserva de manera automatica
     def form_valid(self, form):

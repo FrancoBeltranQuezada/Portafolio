@@ -13,6 +13,7 @@ from .mixin import GroupRequiredMixin
 from django.contrib.auth.models import Group
 from .models import User
 from .decorators import unaunthenticated_user, allowed_users
+from datetime import datetime
 
 # Create your views here.
 
@@ -23,7 +24,7 @@ def homeview(request):
         group = request.user.groups.all()
         
         username = request.user.first_name
-    return render(request, 'users/home.html',{'username':username,'group':group})
+    return render(request, 'users/home.html',{'username':username,'group':group,'time':datetime.now()})
 
 
 def ErrorView(request):
@@ -34,14 +35,17 @@ def register(request):
     # si se envia un post request se valida la informacion, de no ser asi se carga el formulario vacio
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+        
+        if form.is_valid() and form2.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
+            
             # se define el grupo cliente como cliente
             cliente = Group.objects.get(name='cliente')
             # se le asigna el grupo cliente al usuario que se va a crear
             cliente.user_set.add(user)
             # se guarda el usuario con los datos de los campos del form y el grupo cliente
             user.save()
+            
             username = form.cleaned_data.get('username')
             # se envia mensaje de confirmacion y redirecciona
             messages.success(request, f'Acount created for {username}!')

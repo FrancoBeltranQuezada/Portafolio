@@ -45,8 +45,11 @@
         <i class="fas fa-times"  id="cancel"></i>
       </label>
       <div class="sidebar">
-        <header>SERVIEXPRESS</header>
+        <header style="display: none;">SERVIEXPRESS</header>
         <ul>
+          <li>
+            <a href="{% url 'home' %}">SERVIEXPRESS</a>
+          </li>
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
             <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestion Clientes</a>
@@ -88,7 +91,7 @@
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="#"><i class="far fa-envelope"></i>Informes**</a>
+            <a href="{% url 'dashboard' %}"><i class="far fa-envelope"></i>Informes**</a>
           </li> 
           {% endif %}
 
@@ -131,11 +134,14 @@
 
 <!--  Select2-->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<!--Script para ChartJS-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 <script>
   $('.asd').datepicker({
   format: "dd/mm/yyyy",
-  weekStart: 1
+  weekStart: 1,
+  language: 'pt-BR'
 });
 
   $(function () {
@@ -148,11 +154,46 @@
   }); 
 
 
-  var vents = {
-    items : {
-      
-    }
+
+
+
+
+
+  $(function () {
+
+var $reservasChart = $("#reserva-chart");
+$.ajax({
+  url: $reservasChart.data("url"),
+  success: function (data) {
+
+    var ctx = $reservasChart[0].getContext("2d");
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Reservas',
+          backgroundColor: 'purple',
+          data: data.data
+        }]          
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Cantidad de Reserva por Servicios'
+        }
+      }
+    });
+
   }
+});
+
+});
 
 
 

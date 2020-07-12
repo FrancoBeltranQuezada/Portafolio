@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'informes.apps.InformesConfig',
     'reserva.apps.ReservaConfig',
     'users.apps.UsersConfig',
     'servicio.apps.ServicioConfig',
@@ -93,7 +94,7 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     'localhost:1521/XE',
+    'NAME':     'localhost:1522/XE',
     'USER':     'C##DJANGO',
     'PASSWORD': 'django',
     
