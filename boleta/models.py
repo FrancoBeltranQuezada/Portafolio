@@ -13,7 +13,7 @@ class DetalleBoleta(models.Model):
     servicio = models.OneToOneField(Servicio,on_delete=models.SET_NULL,null=True)
     fecha_agregada = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.servicio.name
+        return self.servicio.nombre_servicio
     
 
 # class DetalleBoleta (models.Model):
