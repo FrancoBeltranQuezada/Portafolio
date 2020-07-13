@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = ['venta.apps.VentaConfig',
     'informes.apps.InformesConfig',
     'reserva.apps.ReservaConfig',
     'users.apps.UsersConfig',
@@ -95,7 +95,7 @@ DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
     'NAME':     'localhost:1522/XE',
-    'USER':     'C##BLA',
+    'USER':     'C##django',
     'PASSWORD': 'django',
     
   }}
