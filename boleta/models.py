@@ -45,9 +45,7 @@ class Boleta (models.Model):
 
     def get_boleta_total(self):
         return sum([servicio.servicio.valor_servicio for servicio in self.servicios.all()])
-
-    
-    
+        
     def __str__(self):
         return '{0} - {1}'.format(self.usuario,self.id_boleta)
 
