@@ -36,7 +36,7 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         
-        if form.is_valid() and form2.is_valid():
+        if form.is_valid():
             user = form.save()  # Se guarda el usuario creado en la BD
             
             # se define el grupo cliente como cliente

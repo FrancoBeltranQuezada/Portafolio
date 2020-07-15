@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     'localhost:1522/XE',
-    'USER':     'C##django',
+    'NAME':     'localhost:1521/XE',
+    'USER':     'C##OKA',
     'PASSWORD': 'django',
     
   }}
@@ -149,3 +149,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Pagina a la que redirecciona luego de logearte
 LOGIN_REDIRECT_URL = 'home'
 AUTH_USER_MODEL = 'users.User'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sojitalp@gmail.com'
+EMAIL_HOST_PASSWORD = 'Demiartin1812'
