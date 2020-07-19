@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mt-3 mb-5 text-center" >
+    <h1> Punto De Venta</h1>
+</div>
+<div class="col-6">
+  <div class="mt-5">
+    <label for="">cantidad de Productos en el carrito: {{cartItems}}</label>
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col" style="padding-right: 75px;">Precio</th>
+            <th scope="col">Accion</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+          <tr>
+            <th scope="row">{{product.nombre_servicio}}</th>
+            <td>{{product.valor_servicio}}</td>
+            
+            <td>
+                
+                    <div class="row">
+                        <div class="col-6">
+                          <button data-product={{product.id_servicio}} data-action ="add" class="add-btn update-cart btn car">Agregar al Carrito</button>
+                            
+                        </div>
+                        </div>
+                    </div>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      <a href="{% url 'cart' %}">Proceder a Comprar</a>
+</div>
+
+</div>
+
+{% endblock %}

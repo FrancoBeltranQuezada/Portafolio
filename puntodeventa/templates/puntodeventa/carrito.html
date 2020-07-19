@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<h3>cart</h3>    <h3>store</h3><h3>Cantidad cosas carrito{{cartItems}}</h3>
+    
+
+<div>
+    <h3>Items: {{order.get_cart_items}}</h3>
+    <h3>Total: ${{order.get_cart_total}}</h3>
+    <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+</div>
+{% for item in items %}
+<div>
+    <img style="width:30px" src="{{item.product.imageURL}}" alt="">
+    <label for="">{{item.product.name}}</label>
+    <label for="">{{item.product.price}}</label>
+    <div>
+        <p>{{item.quantity}}</p>
+        <img data-product={{item.product.id_servicio}} data-action="add"  style="width: 30px;" class="update-cart" src="{% static 'img/arrow-up.png' %}" alt="">
+        <img data-product={{item.product.id_servicio}} data-action="remove"  style="width:30px" class="update-cart" src="{% static 'img/arrow-down.png' %}" alt="">
+    </div>
+    <p><STRONG>Total: ${{item.get_total}}</STRONG></p>
+</div>
+{% endfor %}
+{% endblock %}

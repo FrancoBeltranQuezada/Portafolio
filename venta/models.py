@@ -13,7 +13,7 @@ class OrderItem(models.Model):
     servicio = models.OneToOneField(Servicio,on_delete=models.SET_NULL,null=True)
     fecha_agregada = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.servicio.name
+        return self.servicio.nombre_servicio
     
 
 # class DetalleBoleta (models.Model):
@@ -28,8 +28,6 @@ class OrderItem(models.Model):
 
 #     def __str__(self):
 #         return self.boleta_id_boleta
-
-
 
 class Order (models.Model):
     id_boleta = models.IntegerField(primary_key=True, unique=True)

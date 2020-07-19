@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = ['venta.apps.VentaConfig',
+INSTALLED_APPS = ['puntodeventa',
+    'venta.apps.VentaConfig',
     'informes.apps.InformesConfig',
     'reserva.apps.ReservaConfig',
     'users.apps.UsersConfig',
@@ -141,10 +142,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    ]
+    os.path.join(BASE_DIR,'static')
+]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# ruta imagenes en caso de usar
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+MEDIA_URL = '/images/'
 
 # Pagina a la que redirecciona luego de logearte
 LOGIN_REDIRECT_URL = 'home'

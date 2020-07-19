@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h3>checkout</h3>
+<div id="shiping-info">
+  asdasd
+</div>
+<h3>
+  Order Sumary
+</h3>
+{% for item in items %}
+<h3>{{item.product.nombre_servicio}}</h3>
+<h3>{{item.product.valor_servicio}}</h3>
+<h3>{{item.quantity}}</h3>
+{% endfor %}
+
+<h5>Items: {{order.get_cart_items}}</h5>
+<h5>Total: $ {{order.get_cart_total}}</h5>
+<button id="make-payment">Pagar</button>
+<script type="text/javascript">
+    var total = "{{order.get_cart_total}}";
+
+    document.getElementById("make-payment").addEventListener("click", function (e) {
+        submitFormData();
+      });
+    function submitFormData() {
+      console.log("Payment button clicked");
+      var userFormData = {
+        name: null,
+        email: null,
+        total: total,
+      };
+      // url a la que enviaremos los datos
+      var url = '/process_order/'
+      fetch(url,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken,
+          
+        },
+        body:JSON.stringify({'form':userFormData})
+      })
+      .then((response) => response.json())
+      .then((data)=>{
+        console.log('Success:',data);
+        alert('Transaction completed');
+        window.location.href = "{% url 'store' %}"
+      })
+    }
+  </script>
+{% endblock %}

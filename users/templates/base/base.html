@@ -31,6 +31,27 @@
     <link rel="stylesheet" href="/static/css/navCss.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+    <script type="text/javascript">
+      var user = "{{request.user}}";
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getToken("csrftoken");
+    </script>
 
     
 
@@ -65,7 +86,7 @@
 
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
-            <a href="#"><i class="fas fa-stream"></i>Gestion Boletas**</a>
+            <a href="{% url 'store' %}"><i class="fas fa-stream"></i>Gestion Boletas**</a>
           </li>
           <li>
             <a href="#"><i class="fas fa-calendar-week"></i>Gestion Pedidos**</a>
@@ -154,11 +175,6 @@
   }); 
 
 
-
-
-
-
-
   $(function () {
 
 var $reservasChart = $("#reserva-chart");
@@ -201,6 +217,6 @@ $.ajax({
 
 
   </body>
-
+  <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
   
 </html>

@@ -11,7 +11,7 @@
     text-decoration: none;
   }
 
-  .warn {
+.warn {
     background-color: #ffffff;
     border-radius: 4px;
     border: 1px solid #fa9f38;
@@ -21,9 +21,9 @@
     font-family: Arial;
     font-size: 14px;
     padding: 10px 15px;
-    text-decoration: none;
-  }
-  .volv {
+    text-decoration: none;}
+
+.volv {
     background-color: #ffffff;
     border-radius: 4px;
     border: 1px solid #51ee3c;
@@ -40,4 +40,15 @@
     color: white;
 }
 
-
+.car {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #51ee3c;
+  display: inline-block;
+  cursor: pointer;
+  color: #51ee3c !important;
+  font-family: Arial;
+  font-size: 14px;
+  padding: 10px 15px;
+  text-decoration: none;
+}
