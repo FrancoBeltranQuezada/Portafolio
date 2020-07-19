@@ -14,7 +14,7 @@ def home (request):
 def about(request): 
     return render(request,'servicio/about.html')     
 
-@admin_only
+
 def registrar_servicio (request):
     data = {
         'form': ServicioForm()

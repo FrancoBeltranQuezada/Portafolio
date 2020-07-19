@@ -20,9 +20,9 @@ class Reserva(models.Model):
     id_reserva = models.IntegerField(primary_key=True)
     fecha = models.DateField()
     usuario = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
-    patente = models.CharField(max_length=30,help_text="Ingrese Patente")
-    marca = models.CharField(max_length=30,help_text="Ingrese marca")
-    modelo = models.CharField(max_length=30,help_text="Ingrese modelo")
+    patente = models.CharField(max_length=31,help_text="Ingrese Patente")
+    marca = models.CharField(max_length=30,help_text="Ingrese Marca")
+    modelo = models.CharField(max_length=30,help_text="Ingrese Modelo")
     modulo_tiempo = models.ForeignKey(ModuloTiempo,null=True,blank=True,on_delete=models.CASCADE)
     servicio = models.ForeignKey(Servicio,null=True,blank=True,on_delete=models.CASCADE)
 
