@@ -1,0 +1,72 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="content-section">
+            <form method="POST" action="">
+              <!-- token de seguridad de django -->  
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> Lista productos </legend>
+                    <!-- Aqui se imprime el formulario de usuario  --> 
+                    {{ form|crispy }}
+        
+                </fieldset>
+                
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 20%;">ID</th>
+                <th scope="col" style="width: 20%;">Descripcion</th>
+                <th scope="col" style="width: 20%;">Valor compra</th>
+                <th scope="col" style="width: 20%;">Valor venta</th>
+                <th scope="col" style="width: 20%;">Stock</th>
+                <th scope="col" style="width: 20%;">Stock critico</th>
+                <th scope="col" style="width: 20%;">Estado producto</th>
+                <th style="    padding-right: 187px;">Opcion</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+    {% for producto in productos %}
+            <tr>
+                <th scope="row">{{producto.id_producto}}</th>
+                <th scope="row">{{producto.descripcion}}</th>
+                <th scope="row">{{producto.valor_compra}}</th>
+                <th scope="row">{{producto.valor_venta}}</th>
+                <th scope="row">{{producto.stock}}</th>
+                <th scope="row">{{producto.stock_critico}}</th>
+                <th scope="row">{{producto.id_estado_producto}}</th>
+                <th>
+                    <div class="row">
+                        <div class="col-5">
+                            <a href="{% url 'editar_producto' producto.id_producto %}" class="btn warn ">editar</a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'eliminar_producto' producto.id_producto %}" class="btn dang ">eliminar</a>
+                        </div>
+                        
+                    </div>
+                </th>
+            
+            </tr>
+    {%endfor%}
+
+        </tbody>
+    </table>        
+                    
+                <div class="text-center">
+                    <a href="/producto/crear_producto" class="btn " style="color:white; background:black;">Nuevo Producto</a>
+                </div>
+                    
+                
+
+              
+        
+            </form>
+           
+        </div>
+    </div>
+    {% endblock %}

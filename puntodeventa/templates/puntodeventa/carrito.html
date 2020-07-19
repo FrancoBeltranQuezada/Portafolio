@@ -2,18 +2,25 @@
 {% load static %}
 {% block content %}
 
-<h3>cart</h3>    <h3>store</h3><h3>Cantidad cosas carrito{{cartItems}}</h3>
-    
 
-<div>
-    <h3>Items: {{order.get_cart_items}}</h3>
-    <h3>Total: ${{order.get_cart_total}}</h3>
-    <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+<div class="mt-3 mb-5 text-center" >
+    <h1> Punto De Venta</h1>
 </div>
-{% for item in items %}
-<div>
-    <img style="width:30px" src="{{item.product.imageURL}}" alt="">
-    <label for="">{{item.product.name}}</label>
+
+<div class="row">
+    <div class="col">
+        <h3>Items:<i class="fas fa-shopping-cart"></i> {{order.get_cart_items}}</h3>
+        <h3>Total: ${{order.get_cart_total}}</h3>
+        
+    </div>
+    <div class="col">
+        <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+    </div>
+    
+</div>
+<!-- {% for item in items %}
+<div class="row">
+    <label for="">{{item.product.nombre_servicio}}</label>
     <label for="">{{item.product.price}}</label>
     <div>
         <p>{{item.quantity}}</p>
@@ -22,5 +29,42 @@
     </div>
     <p><STRONG>Total: ${{item.get_total}}</STRONG></p>
 </div>
-{% endfor %}
-{% endblock %}
+{% endfor %} -->
+
+
+
+<table class="table table-striped ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre Servicio</th>
+        <th scope="col" style="padding-right: 75px;">Valor</th>
+        <th scope="col">Accion</th>
+        <th scope="col">Total Linea</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+      <tr>
+        <td scope="row">{{item.product.nombre_servicio}}</th>
+        <td>{{item.product.valor_servicio}}</td>
+        
+        <td>
+            
+            <div class="row">
+                <p class="mr-3">{{item.quantity}}</p>
+                <img data-product={{item.product.id_servicio}} data-action="add"  style="width: 15px;height: 15px;" class="update-cart" src="{% static 'img/arrow-up.png' %}" alt="">
+                <img data-product={{item.product.id_servicio}} data-action="remove"  style="width:15px;height: 15px;" class="update-cart" src="{% static 'img/arrow-down.png' %}" alt="">
+            </div>
+        </td>
+        <td>
+            <p><STRONG>Total: ${{item.get_total}}</STRONG></p>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+  {% endblock %}

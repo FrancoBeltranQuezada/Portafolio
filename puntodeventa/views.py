@@ -4,10 +4,11 @@ from servicio.models import Servicio
 import json
 import datetime
 from django.http import JsonResponse
+from proveedor.decorators import allowed_users
 
 # Create your views here.
 
-
+@allowed_users(allowed_roles=['admin', 'empleado'])
 def tienda(request):
     if request.user.is_authenticated:
 

@@ -1,0 +1,15 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form  method="POST">
+    {% csrf_token %}
+    <h3>¿Desea eliminar registro de {{productos.descripcion}} ?</h3>
+
+    
+    <a href="{% url 'producto-home' %}" class="btn volv">Volver</a>
+    <button class="btn dang" type="submit">Eliminar</button>
+</form>    
+
+{% endblock %}  
