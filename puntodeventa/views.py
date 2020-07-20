@@ -4,10 +4,12 @@ from servicio.models import Servicio
 import json
 import datetime
 from django.http import JsonResponse
+from proveedor.decorators import allowed_users
+from django.views.generic import DeleteView
 
 # Create your views here.
 
-
+@allowed_users(allowed_roles=['admin', 'empleado'])
 def tienda(request):
     if request.user.is_authenticated:
 
@@ -111,3 +113,18 @@ def processOrder(request):
     #     print('Not Logged')
     print('Data:',request.body)
     return JsonResponse('payment complete',safe=False)
+
+
+def listarOrder(request):
+
+
+    orders = Order.objects.all()
+
+    context = {'orders': orders}
+
+    return render(request,'puntodeventa/ordenes.html',context)
+
+class OrderDeleteView(DeleteView):
+    model = Order
+    template_name = 'puntodeventa/confirm_delete.html'
+    success_url = '/listar_order/'

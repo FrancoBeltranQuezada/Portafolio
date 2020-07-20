@@ -1,0 +1,37 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="content-section">
+            <form method="POST" action="">
+              <!-- token de seguridad de django -->  
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> Registro Producto </legend>
+                    <!-- Aqui se imprime el formulario de usuario  --> 
+                    {{ form|crispy }}
+
+
+
+                
+        
+                </fieldset>
+
+                
+             
+
+            <form method=link action={% url 'crear_producto' %}>
+                <div class="form-group">
+                    <button class="btn " type="submit">
+                        Crear Producto/editar
+                    </button>
+                </div>
+            </form>   
+    
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}

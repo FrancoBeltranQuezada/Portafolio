@@ -53,7 +53,7 @@ def listar_servicio(request):
     return render (request, 'servicio/home.html', contexto)
 
 
-@admin_only
+# @admin_only
 def eliminar_servicio(request, id_servicio):
     servicio = Servicio.objects.get(id_servicio=id_servicio)
 
