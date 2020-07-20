@@ -1,58 +1,69 @@
 {% extends 'base/base.html' %}
+
 {% block content%}
 
 
 
+
 <div class="mt-3 mb-5" style="text-align: center;">
-    <h1> Gestion de Clientes</h1>
+  <h1> Gestion de Clientes</h1>
 </div>
 
 <div class="mt-5">
-    <table class="table table-striped ">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col" style="padding-right: 75px;">Rut</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Email</th>
-            <th scope="col" style="padding-right: 105px;">Direccion</th>
-            <th scope="col">Telefono</th>
-            <th scope="col" style="padding-right: 90px;">Fecha Registro</th>
-            <th scope="col" style="padding-right: 210px;">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for user in usuarios %}
-          <tr>
-            <th scope="row">{{user.id}}</th>
-            <td>{{user.rut}}</td>
-            <td > <a class="text-nowrap" href="{% url 'user-detail' user.id %}">{{user.first_name}} {{user.last_name}}</a> </td>
-            <td>{{user.email}}</td>
-            <td>{{user.direccion}}</td>
-            <td>{{user.telefono}}</td>
-            <td>{{user.date_joined}}</td>
-            <td>
-                
-                    <div class="row">
-                        <div class="col-6">
-                          <a href="{% url 'user-update' user.id %}" class="btn warn" style="color:black;">
-                            Actualizar
-                       </a>
-                            
-                        </div>
-                        <div class="col-6">
-                          <a href="{% url 'user-delete' user.id %}"class="btn dang" >
-                            Eliminar
-                       </a>
-                        </div>
-                    </div>
-            
-                
-               
-    
-            </td>
-          </tr>
-          {% endfor %}
+  <table class="table table-striped ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col" style="padding-right: 75px;">Rut</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col" style="padding-right: 105px;">Direccion</th>
+        <th scope="col">Telefono</th>
+        <th scope="col" style="padding-right: 90px;">Fecha Registro</th>
+        <th scope="col" style="padding-right: 210px;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if usuarios %}
+      {% for user in usuarios %}
+      <tr>
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.rut}}</td>
+        <td> <a class="text-nowrap" href="{% url 'user-detail' user.id %}">{{user.first_name}} {{user.last_name}}</a>
+        </td>
+        <td>{{user.email}}</td>
+        <td>{{user.direccion}}</td>
+        <td>{{user.telefono}}</td>
+        <td>{{user.date_joined}}</td>
+        <td>
+
+          <div class="row">
+            <div class="col-6">
+              <a href="{% url 'user-update' user.id %}" class="btn warn" style="color:black;">
+                Actualizar
+              </a>
+
+            </div>
+            <div class="col-6">
+              <a href="{% url 'user-delete' user.id %}" class="btn dang">
+                Eliminar
+              </a>
+            </div>
+          </div>
+
+
+
+
+        </td>
+      </tr>
+
+
+      {% endfor %}
+
+      {% else %}
+      <h2>No hay registros de clientes</h2>
+
+      {% endif %}
           
         </tbody>
       </table>
@@ -62,9 +73,9 @@
 
     <div style="text-align:center;">
         <a class="btn bt" href="{% url 'register' %}" style="color:white; background:black;">
-            Crear Nuevo Cliente
-        </a>
-    </div>
+      Crear Nuevo Cliente
+      </a>
+</div>
 
 
 {% endblock %}

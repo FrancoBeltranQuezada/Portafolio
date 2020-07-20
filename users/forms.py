@@ -53,6 +53,17 @@ class UserUpdateForm(UserCreationForm):
             'direccion',
             'telefono',
         ]
+
+        widgets = {
+            'username': forms.TextInput(attrs = {'class': 'form-control'}),
+            'email': forms.EmailInput(attrs = {'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs = {'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs = {'class': 'form-control'}),
+            'rut': forms.TextInput(attrs = {'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs = {'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs = {'class': 'form-control'}),
+
+        }
      
 
 
@@ -64,4 +75,15 @@ class UserForm(forms.ModelForm):
             'direccion',
             'telefono')
         exclude = ['password1','password2','username']
+
+        widgets = {
+            'username': forms.TextInput(attrs = {'class': 'form-control'}),
+            'email': forms.EmailInput(attrs = {'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs = {'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs = {'class': 'form-control'}),
+            'rut': forms.TextInput(attrs = {'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs = {'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs = {'class': 'form-control'}),
+
+        }
 

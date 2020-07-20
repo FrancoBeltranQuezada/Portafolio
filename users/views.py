@@ -84,7 +84,7 @@ def UpdateUserView(request, pk):
         form = UserForm(data=request.POST, instance=user)
         if form.is_valid():
             form.save()
-            print('si guardpo')
+            print('si guardo')
             return redirect('user-list')
         else:
             print('no guardó')
@@ -133,7 +133,7 @@ class EmpleadoDetailView(DetailView):
 
 class EmpleadoDeleteView(DeleteView):
     model = User
-    success_url = '/usuario/gestion-empleado/'
+    success_url = '/usuario/gestion-empleados/'
     template_name = 'empleados/empleado_confirm_delete.html'
 
 
