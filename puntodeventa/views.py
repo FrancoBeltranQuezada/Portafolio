@@ -5,6 +5,7 @@ import json
 import datetime
 from django.http import JsonResponse
 from proveedor.decorators import allowed_users
+from django.views.generic import DeleteView
 
 # Create your views here.
 
@@ -116,9 +117,14 @@ def processOrder(request):
 
 def listarOrder(request):
 
-    ordenes = str(Order.objects.values('id')) 
-    context = {
-        'ordenes':ordenes
-    }
 
-    return render('puntodeventa/ordenes.html',context)
+    orders = Order.objects.all()
+
+    context = {'orders': orders}
+
+    return render(request,'puntodeventa/ordenes.html',context)
+
+class OrderDeleteView(DeleteView):
+    model = Order
+    template_name = 'puntodeventa/confirm_delete.html'
+    success_url = '/listar_order/'

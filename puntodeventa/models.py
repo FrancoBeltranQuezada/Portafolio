@@ -13,7 +13,7 @@ class Customer(models.Model):
 
     # metodo para obtener el nombre del customer
     def __str__(self):
-        return self.name
+        return self.user.first_name
 
 
 class Order(models.Model):

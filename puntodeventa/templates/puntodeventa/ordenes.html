@@ -2,6 +2,67 @@
 {% load static %}
 
 {% block content %}
-{% for ordern en ordenes %}
-{{orden.id}}
-{% end block %}
+<div class="mt-3 mb-5 text-center" >
+    <h1> Lista Boletas</h1>
+  </div>
+
+
+
+  
+<table class="table table-striped ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id Boleta</th>
+        <th scope="col" style="padding-right: 75px;">Usuario Vendedor</th>
+        <th scope="col">Cantidad de items</th>
+        <th scope="col">Fecha Venta</th>
+        
+        <th scope="col">Total</th>
+        <th scope="col">Accion</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        {% if order.get_cart_total > 0 %}
+      <tr>
+        <td scope="row">{{order.id}}</th>
+        <td>{{order.customer}}</td>
+        
+        <td>{{order.get_cart_items}}</td>
+        <td>{{order.date_ordered}}</td>
+        <td>
+            <p><STRONG>Total: ${{order.get_cart_total}}</STRONG></p>
+        </td>
+        <td>
+                
+          <div class="row">
+
+                  
+             
+              <div class="col">
+                <a href="{% url 'order-delete' order.id %}"class="btn dang" >
+                  Eliminar
+             </a>
+              </div>
+          </div>
+  
+      
+     
+
+  </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+  
+
+    </tbody>
+  </table>
+  <div class="col-12 text-center">
+    <a class="volv" href="{% url 'store' %}">Volver</a>
+  </div>
+
+
+
+
+{% endblock %}

@@ -60,4 +60,35 @@
     padding: 5px 5px;
     text-decoration: none;
   }
+
+  .vender{
+  
+
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #00c851 !important;
+    display: inline-block;
+    cursor: pointer;
+    color: #00c851 ;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 10px 14.5px;
+    text-decoration: none;
+  }
+  
+  .vender:hover{
+  
+
+    background-color: #00c851;
+    border-radius: 4px;
+    border: 1px solid #00c851 !important;
+    display: inline-block;
+    cursor: pointer;
+    color: white ;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 10px 14.5px;
+    text-decoration: none;
+  }
+  
   
