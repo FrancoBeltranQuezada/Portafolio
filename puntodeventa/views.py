@@ -112,3 +112,13 @@ def processOrder(request):
     #     print('Not Logged')
     print('Data:',request.body)
     return JsonResponse('payment complete',safe=False)
+
+
+def listarOrder(request):
+
+    ordenes = str(Order.objects.values('id')) 
+    context = {
+        'ordenes':ordenes
+    }
+
+    return render('puntodeventa/ordenes.html',context)
