@@ -1,16 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from servicio.models import Servicio
 import json
 import datetime
 from django.http import JsonResponse
 from proveedor.decorators import allowed_users
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView,ListView
+from .forms import CrearCustomerForm
 
 # Create your views here.
 
 @allowed_users(allowed_roles=['admin', 'empleado'])
 def tienda(request):
+
     if request.user.is_authenticated:
 
         customer = request.user.customer
@@ -118,7 +120,7 @@ def processOrder(request):
 def listarOrder(request):
 
 
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-date_ordered')
 
     context = {'orders': orders}
 
@@ -128,3 +130,31 @@ class OrderDeleteView(DeleteView):
     model = Order
     template_name = 'puntodeventa/confirm_delete.html'
     success_url = '/listar_order/'
+
+def crearCustomer (request):
+    data = {
+        'form': CrearCustomerForm()
+    }
+
+    if request.method == 'POST':
+        formulario = CrearCustomerForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Vendedor creado correctamente"
+        else:
+            data['mensaje'] = "El vendedor no se pudo guardar correctamente"
+
+
+    return render (request,'puntodeventa/customer.html', data)
+
+def ListarCustomer(request):
+    customers = Customer.objects.all()
+    context = {
+        'customers':customers
+    }
+    return render(request,'puntodeventa/listar_customer.html',context)
+
+class EliminarCustomer(DeleteView):
+    model= Customer
+    template_name = 'puntodeventa/eliminar_customer.html'
+    success_url ='/'

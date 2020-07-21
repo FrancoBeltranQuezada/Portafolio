@@ -1,0 +1,28 @@
+{% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form action="" method="POST">
+        <a href="">Registrar Vendedor</a>
+
+        {% csrf_token %}
+
+        <form action="" method="POST">
+
+
+            <table>
+                {{ form|crispy}}
+                
+
+            </table>
+
+            <a class="volv" href="{% url 'store' %}">Volver</a>
+            <input class="vender"type="submit" value="Agregar">
+            <a class="volv" href="{% url 'listar-customer' %}">Ver todos los Vendedores</a>
+
+
+        </form>
+    </form>
+    {{mensaje}}
+
+    
+    {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+
+
+
+<div class="mt-5">
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Empleado</th>
+            <th scope="col">Acciones</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+          <tr>
+            <th scope="row">{{customer}}</th>
+            
+            
+            <td>
+                
+                    <div class="row">
+                        <div class="col-6">
+                          <a href="{% url 'customer-delete' customer.id %}"class="btn dang" >
+                            Eliminar
+                       </a>
+                        </div>
+                    </div>
+            
+                
+               
+    
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+  </div>
+  
+  
+  
+  <div style="text-align:center;">
+      <a class="volv" href="{% url 'customer' %}" >
+          Volver
+      </a>
+  </div>
+{% endblock %}
