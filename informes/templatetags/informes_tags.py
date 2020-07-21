@@ -1,7 +1,7 @@
 from django import template
 import datetime
 register = template.Library()
-
+from django.shortcuts import render
 from reserva.models import Reserva
 from users.models import User
 
@@ -27,7 +27,9 @@ def show_reservas_hoy():
     return {'reserv':reserv}
 
 @register.inclusion_tag('reserva/reserva_cliente.html')
-def show_reservas_cliente():
-    reserv = Reserva.objects.all().values('id_reserva', 'fecha', 'patente', 'marca', 'modelo', 'servicio__nombre_servicio', 'usuario__first_name', 'modulo_tiempo_id__hora_inicio', 'modulo_tiempo_id__hora_fin',).filter(id_reserva__isnull=False)
+def show_reservas_cliente(request):
+    reserv = Reserva.objects.all().values('id_reserva', 'fecha', 'patente', 'marca', 'modelo', 'servicio__nombre_servicio', 'usuario__first_name', 'modulo_tiempo_id__hora_inicio', 'modulo_tiempo_id__hora_fin',).filter(user=request.user)
     
     return {'reserv': reserv}
+
+    

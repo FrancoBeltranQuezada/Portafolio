@@ -9,8 +9,9 @@ class CrearCustomerForm(forms.ModelForm):
         # Estos son los campos que queremos mostrar en nuestro formulario y en que orden
         fields = [
         'user',
+        'name',
+        'email'
 
         ]       
-        exclude = ['name','email']
 
 
