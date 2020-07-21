@@ -1,0 +1,42 @@
+<div class="mt-5">
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Patente</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col" class="text-nowrap">Modulo de tiempo</th>
+                <th scope="col">Servicio</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservs in reserv %}
+            <tr>
+                <th class="text-nowrap">{{reservs.id_reserva}}</th>
+                <td class="text-nowrap">{{reservs.fecha}}</td>
+                <td class="text-nowrap">
+                    {{reservs.patente}}
+                </td>
+                <td class="text-nowrap">{{reservs.marca}}</td>
+                <td class="text-nowrap">{{reservs.modelo}}</td>
+                <td class="text-nowrap">{{reservs.modulo_tiempo_id__hora_inicio}}
+                    {{reservs.modulo_tiempo_id__hora_fin}}</td>
+                <td class="text-nowrap">{{reservs.servicio__nombre_servicio}}</td>
+
+                <td class="text-nowrap">{{reservs.usuario__first_name}}</td>
+
+
+                
+
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
