@@ -29,14 +29,14 @@
       {% for item in items %}
     <tr>
       <td scope="row">{{item.product.nombre_servicio}}</th>
-      <td>{{item.product.valor_servicio}}</td>
+      <td>$ {{item.product.valor_servicio}}</td>
       
       <td>
         {{item.quantity}}
 
       </td>
       <td>
-          <p><STRONG>Total: ${{item.get_total}}</STRONG></p>
+          <p><STRONG>Total: $ {{item.get_total}}</STRONG></p>
       </td>
     </tr>
     {% endfor %}
@@ -49,7 +49,7 @@
     <a class="volv" href="{% url 'cart' %}">Volver</a>
     <button id="make-payment" class="btn btn-success waves-effect waves-light">Pagar</button>
     <h5>Items: <strong>{{order.get_cart_items}}</strong> </h5>
-    <h5>Total: <strong>${{order.get_cart_total}}</strong> </h5>
+    <h5>Total: <strong>$ {{order.get_cart_total}}</strong> </h5>
   </div>
 </div>
 
