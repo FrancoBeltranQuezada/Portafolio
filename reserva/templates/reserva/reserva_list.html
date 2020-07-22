@@ -21,11 +21,11 @@
         <th scope="col" class="text-nowrap">Modulo de tiempo</th>
         <th scope="col">Servicio</th>
         <th scope="col">Usuario</th>
-        <th scope="col">Acciones</th>
+        <th scope="col" style="padding-right:200px">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      {% for reserva in reservas %}
+      {% for reserva in reservs %}
       <tr>
         <th scope="row">{{reserva.id_reserva}}</th>
         <td>{{reserva.fecha}}</td>
@@ -67,8 +67,64 @@
 
 {% if request.user|has_group:'cliente' %}
 <div class="mt-5">
+  <table class="table table-striped ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Patente</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col" class="text-nowrap">Modulo de tiempo</th>
+        <th scope="col">Servicio</th>
 
-  {% show_reservas_cliente %}
+        <th scope="col" style="padding-right:200px">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reserva in some %}
+      <tr>
+        <th scope="row">{{reserva.id_reserva}}</th>
+        <td>{{reserva.fecha}}</td>
+        <td>{{reserva.patente}}</td>
+        <td>{{reserva.marca}}</td>
+        <td>{{reserva.modelo}}</td>
+        <td class="text-nowrap">{{reserva.modulo_tiempo.hora_inicio}} {{reserva.modulo_tiempo.hora_fin}}</td>
+        <td>{{reserva.servicio.nombre_servicio}}</td>
+        
+
+        <td>
+
+          <div class="row">
+            <div class="col-6">
+              <a href="{% url 'actualizar-reserva' reserva.id_reserva %}" class="btn warn" style="color:black;">
+                Actualizar
+              </a>
+
+            </div>
+            <div class="col-6">
+              <a href="{% url 'elminar-reserva' reserva.id_reserva %}" class="btn dang">
+                Eliminar
+              </a>
+            </div>
+          </div>
+
+
+
+
+        </td>
+      </tr>
+      
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+
+ 
+    
+
+  
 
 </div>
 {% endif %}

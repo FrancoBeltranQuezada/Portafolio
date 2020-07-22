@@ -29,7 +29,22 @@ class ListarReserva(ListView):
     ordering = ['-fecha']
 
 
-   
+    def get_context_data(self,**kwargs):
+       
+        some = Reserva.objects.all().filter(usuario_id = self.request.user)
+        context = {'some': some} 
+        print(self.request.user)
+        return context
+
+
+def listarReserva(request):
+    some = Reserva.objects.all().filter(usuario_id = request.user)
+    reservs = Reserva.objects.all()
+    context = {
+        'some':some,
+        'reservs': reservs
+    }
+    return render (request, 'reserva/reserva_list.html', context)
 
 
 class EliminarReserva(DeleteView):
