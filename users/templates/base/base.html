@@ -86,7 +86,7 @@
 
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'store' %}"><i class="fas fa-shopping-cart"></i>Gestión Boletas**</a>
+            <a href="{% url 'store' %}"><i class="fas fa-shopping-cart"></i>Gestión Boletas</a>
           </li>
           
           
@@ -103,17 +103,17 @@
           {% endif %}
 
           <li>
-            <a href="{% url 'listar-reserva' %}"><i class="fas fa-address-book"></i>Reservas**</a>
+            <a href="{% url 'listar-reserva' %}"><i class="fas fa-address-book"></i>Reservas</a>
           </li>
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'dashboard' %}"><i class="far fa-chart-bar"></i>Informes**</a>
+            <a href="{% url 'dashboard' %}"><i class="far fa-chart-bar"></i>Informes</a>
           </li> 
           {% endif %}
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'customer' %}"><i class="fas fa-hand-holding-usd"></i>Asignar Vendedor**</a>
+            <a href="{% url 'customer' %}"><i class="fas fa-hand-holding-usd"></i>Asignar Vendedor</a>
           </li> 
           {% endif %}
 
