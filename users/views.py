@@ -49,7 +49,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             # se envia mensaje de confirmacion y redirecciona
             messages.success(request, f'Acount created for {username}!')
-            return redirect('login')
+            return redirect('user-list')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
