@@ -20,7 +20,7 @@ def tienda(request):
             customer = request.user.customer
         except Customer.DoesNotExist:
             return render(request,'puntodeventa/error.html')
-
+        customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
@@ -51,7 +51,7 @@ def carrito(request):
         cartItems = order['get_cart_items']
     context = {'items': items, 'order': order,'cartItems':cartItems}
 
-    return render( 'puntodeventa/carrito.html',context)
+    return render(request, 'puntodeventa/carrito.html',context)
 
 def checkout(request):
     if request.user.is_authenticated:
