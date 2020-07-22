@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/static/img/pngtree-wrench-icon-in-trendy-style-isolated-background-png-image_1551016.jpg" type="image/x-icon" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -73,53 +73,53 @@
           </li>
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'user-list' %}"><i class="fas fa-qrcode"></i>Gestión Clientes</a>
+            <a href="{% url 'user-list' %}"><i class="fas fa-address-card"></i>Gestión Clientes</a>
           </li>
           {% endif %}
           
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'empleado-list' %}"><i class="fas fa-link"></i>Gestión Empleados</a>
+            <a href="{% url 'empleado-list' %}"><i class="far fa-address-book"></i>Gestión Empleados</a>
           </li>
           {% endif %}
           
 
           {% if request.user|has_group:'admin' or request.user|has_group:'empleado' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'store' %}"><i class="fas fa-stream"></i>Gestión Boletas**</a>
+            <a href="{% url 'store' %}"><i class="fas fa-shopping-cart"></i>Gestión Boletas**</a>
           </li>
           
           
           <li>
-            <a href="{% url 'proveedor-home' %}"><i class="fas fa-sliders-h"></i>Gestión Proveedor</a>
+            <a href="{% url 'proveedor-home' %}"><i class="fas fa-clipboard-check"></i>Gestión Proveedor</a>
           </li>
           {% endif %}
           
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'listar-servicio' %}"><i class="far fa-envelope"></i>Gestión Servicios</a>
+            <a href="{% url 'listar-servicio' %}"><i class="fas fa-concierge-bell"></i>Gestión Servicios</a>
           </li> 
           {% endif %}
 
           <li>
-            <a href="{% url 'listar-reserva' %}"><i class="far fa-envelope"></i>Reservas**</a>
+            <a href="{% url 'listar-reserva' %}"><i class="fas fa-address-book"></i>Reservas**</a>
           </li>
 
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'dashboard' %}"><i class="far fa-envelope"></i>Informes**</a>
+            <a href="{% url 'dashboard' %}"><i class="far fa-chart-bar"></i>Informes**</a>
           </li> 
           {% endif %}
           {% if request.user|has_group:'admin' or request.user.is_staff %} 
           <li>
-            <a href="{% url 'customer' %}"><i class="far fa-envelope"></i>Asignar Vendedor**</a>
+            <a href="{% url 'customer' %}"><i class="fas fa-hand-holding-usd"></i>Asignar Vendedor**</a>
           </li> 
           {% endif %}
 
           {% if user.is_authenticated%}
           <li>
-            <a href="{% url 'logout'%}"><i class="far fa-envelope"></i>Cerrar sesión</a>
+            <a href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
           </li>
           {% endif %}
         </ul>
