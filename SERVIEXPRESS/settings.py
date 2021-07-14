@@ -95,8 +95,8 @@ WSGI_APPLICATION = 'SERVIEXPRESS.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     'localhost:1522/XE',
-    'USER':     'C##DJANGO',
+    'NAME':     'localhost:1521/XE',
+    'USER':     'C##OKA',
     'PASSWORD': 'django',
     
   }}
